@@ -16,6 +16,8 @@ HEADERS += \
     mainwindow.h
 
 FORMS += \
+    ManageUser.ui \
+    SelectProfile.ui \
     mainwindow.ui
 
 # Default rules for deployment.
