@@ -20,7 +20,6 @@ HEADERS += \
 FORMS += \
     ManageUser.ui \
     SelectProfile.ui \
-    mainwindow.ui
     CreateUser.ui \
     Login.ui
 
