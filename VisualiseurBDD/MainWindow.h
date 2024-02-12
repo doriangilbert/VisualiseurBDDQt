@@ -17,6 +17,13 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    class Login *loginWidget;
+    class CreateUser *createUserWidget;
+    class ManageUser *manageUserWidget;
+    class SelectProfile *selectProfileWidget;
+
+public slots:
+    void goToManageUserFromLogin();
 };
 
 #endif // MAINWINDOW_H

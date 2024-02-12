@@ -49,7 +49,7 @@
     <string>Identifiant</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="identifiantLineEdit">
    <property name="geometry">
     <rect>
      <x>180</x>
@@ -62,7 +62,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="seConnecterPushButton">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -88,7 +88,7 @@
     <string>Mot de passe</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="motDePasseLineEdit">
    <property name="geometry">
     <rect>
      <x>180</x>

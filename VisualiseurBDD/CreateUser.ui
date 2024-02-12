@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="validerPushButton">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -42,7 +42,7 @@
     <string>Confirmation (mot de passe)</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="prenomLineEdit">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -55,7 +55,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="motDePasseLineEdit">
    <property name="geometry">
     <rect>
      <x>330</x>
@@ -68,7 +68,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="nomLineEdit">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -97,7 +97,7 @@
     <string>Mot de passe</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox">
+  <widget class="QCheckBox" name="adminCheckBox">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -142,7 +142,7 @@
     <string>Identifiant</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="identifiantLineEdit">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -191,7 +191,7 @@
     <string>Création d'un utilisateur</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="confirmationMotDePasseLineEdit">
    <property name="geometry">
     <rect>
      <x>330</x>

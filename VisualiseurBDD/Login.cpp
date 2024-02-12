@@ -12,3 +12,10 @@ Login::~Login()
 {
     delete ui;
 }
+
+
+void Login::on_seConnecterPushButton_clicked()
+{
+    emit loginButtonClicked();
+}
+

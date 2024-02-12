@@ -17,6 +17,12 @@ public:
 
 private:
     Ui::Login *ui;
+
+private slots:
+    void on_seConnecterPushButton_clicked();
+
+signals:
+    void loginButtonClicked();
 };
 
 #endif // LOGIN_H
