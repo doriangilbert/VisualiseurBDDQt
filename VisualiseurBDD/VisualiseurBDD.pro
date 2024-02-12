@@ -11,19 +11,26 @@ CONFIG += c++17
 SOURCES += \
     CreateUser.cpp \
     Login.cpp \
+    MainWindow.cpp \
     ManageUser.cpp \
+    Profile.cpp \
     SelectProfile.cpp \
+    User.cpp \
     main.cpp
 
 HEADERS += \
     CreateUser.h \
     Login.h \
+    MainWindow.h \
     ManageUser.h \
-    SelectProfile.h
+    Profile.h \
+    SelectProfile.h \
+    User.h
 
 FORMS += \
     CreateUser.ui \
     Login.ui \
+    MainWindow.ui \
     ManageUser.ui \
     SelectProfile.ui
 

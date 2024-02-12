@@ -2,7 +2,7 @@
 #include "ui_ManageUser.h"
 
 ManageUser::ManageUser(QWidget *parent)
-    : QMainWindow(parent)
+    : QWidget(parent)
     , ui(new Ui::ManageUser)
 {
     ui->setupUi(this);

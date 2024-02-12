@@ -1,13 +1,13 @@
 #ifndef MANAGEUSER_H
 #define MANAGEUSER_H
 
-#include <QMainWindow>
+#include <QWidget>
 
 namespace Ui {
 class ManageUser;
 }
 
-class ManageUser : public QMainWindow
+class ManageUser : public QWidget
 {
     Q_OBJECT
 

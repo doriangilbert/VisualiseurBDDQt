@@ -2,7 +2,7 @@
 #include "ui_Login.h"
 
 Login::Login(QWidget *parent)
-    : QMainWindow(parent)
+    : QWidget(parent)
     , ui(new Ui::Login)
 {
     ui->setupUi(this);

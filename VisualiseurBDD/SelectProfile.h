@@ -1,13 +1,13 @@
 #ifndef SELECTPROFILE_H
 #define SELECTPROFILE_H
 
-#include <QMainWindow>
+#include <QWidget>
 
 namespace Ui {
 class SelectProfile;
 }
 
-class SelectProfile : public QMainWindow
+class SelectProfile : public QWidget
 {
     Q_OBJECT
 

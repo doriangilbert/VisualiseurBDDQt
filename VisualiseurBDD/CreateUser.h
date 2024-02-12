@@ -1,13 +1,13 @@
 #ifndef CREATEUSER_H
 #define CREATEUSER_H
 
-#include <QMainWindow>
+#include <QWidget>
 
 namespace Ui {
 class CreateUser;
 }
 
-class CreateUser : public QMainWindow
+class CreateUser : public QWidget
 {
     Q_OBJECT
 
