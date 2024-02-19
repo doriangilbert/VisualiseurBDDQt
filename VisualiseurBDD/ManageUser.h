@@ -17,6 +17,14 @@ public:
 
 private:
     Ui::ManageUser *ui;
+
+private slots:
+    void on_selectionProfilPushButton_clicked();
+    void on_seDeconnecterPushButton_clicked();
+
+signals:
+    void selectProfileButtonClicked();
+    void disconnectButtonClicked();
 };
 
 #endif // MANAGEUSER_H

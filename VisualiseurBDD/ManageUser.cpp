@@ -12,3 +12,15 @@ ManageUser::~ManageUser()
 {
     delete ui;
 }
+
+void ManageUser::on_selectionProfilPushButton_clicked()
+{
+    emit selectProfileButtonClicked();
+}
+
+
+void ManageUser::on_seDeconnecterPushButton_clicked()
+{
+    emit disconnectButtonClicked();
+}
+

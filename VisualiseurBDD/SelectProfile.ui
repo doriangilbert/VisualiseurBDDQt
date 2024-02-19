@@ -45,7 +45,7 @@
     <string>Sélection de profil</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="validerPushButton">
    <property name="geometry">
     <rect>
      <x>270</x>

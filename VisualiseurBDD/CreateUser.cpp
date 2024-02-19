@@ -12,3 +12,9 @@ CreateUser::~CreateUser()
 {
     delete ui;
 }
+
+void CreateUser::on_validerPushButton_clicked()
+{
+    emit validateButtonClicked();
+}
+

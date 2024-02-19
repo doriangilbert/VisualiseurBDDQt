@@ -24,6 +24,10 @@ private:
 
 public slots:
     void goToManageUserFromLogin();
+    void goToSelectProfileFromManageUser();
+    void goToLoginFromManageUser();
+    void goToManageUserFromSelectProfile();
+    void goToLoginFromCreateUser();
 };
 
 #endif // MAINWINDOW_H

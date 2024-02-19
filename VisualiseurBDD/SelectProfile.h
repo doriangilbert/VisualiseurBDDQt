@@ -17,6 +17,12 @@ public:
 
 private:
     Ui::SelectProfile *ui;
+
+private slots:
+    void on_validerPushButton_clicked();
+
+signals:
+    void validateButtonClicked();
 };
 
 #endif // SELECTPROFILE_H

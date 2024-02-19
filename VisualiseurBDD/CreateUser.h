@@ -17,6 +17,12 @@ public:
 
 private:
     Ui::CreateUser *ui;
+
+private slots:
+    void on_validerPushButton_clicked();
+
+signals:
+    void validateButtonClicked();
 };
 
 #endif // CREATEUSER_H

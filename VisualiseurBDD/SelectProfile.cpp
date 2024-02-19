@@ -12,3 +12,9 @@ SelectProfile::~SelectProfile()
 {
     delete ui;
 }
+
+void SelectProfile::on_validerPushButton_clicked()
+{
+    emit validateButtonClicked();
+}
+

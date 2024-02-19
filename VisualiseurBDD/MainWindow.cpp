@@ -12,10 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     loginWidget = new Login(this);
-    loginWidget->show();
+    loginWidget->hide();
 
     createUserWidget = new CreateUser(this);
-    createUserWidget->hide();
+    createUserWidget->show();
 
     manageUserWidget = new ManageUser(this);
     manageUserWidget->hide();
@@ -24,6 +24,10 @@ MainWindow::MainWindow(QWidget *parent)
     selectProfileWidget->hide();
 
     connect(loginWidget, &Login::loginButtonClicked, this, &MainWindow::goToManageUserFromLogin);
+    connect(manageUserWidget, &ManageUser::selectProfileButtonClicked, this, &MainWindow::goToSelectProfileFromManageUser);
+    connect(manageUserWidget, &ManageUser::disconnectButtonClicked, this, &MainWindow::goToLoginFromManageUser);
+    connect(selectProfileWidget, &SelectProfile::validateButtonClicked, this, &MainWindow::goToManageUserFromSelectProfile);
+    connect(createUserWidget, &CreateUser::validateButtonClicked, this, &MainWindow::goToLoginFromCreateUser);
 }
 
 MainWindow::~MainWindow()
@@ -36,3 +40,22 @@ void MainWindow::goToManageUserFromLogin() {
     manageUserWidget->show();
 }
 
+void MainWindow::goToSelectProfileFromManageUser() {
+    manageUserWidget->hide();
+    selectProfileWidget->show();
+}
+
+void MainWindow::goToLoginFromManageUser() {
+    manageUserWidget->hide();
+    loginWidget->show();
+}
+
+void MainWindow::goToManageUserFromSelectProfile() {
+    selectProfileWidget->hide();
+    manageUserWidget->show();
+}
+
+void MainWindow::goToLoginFromCreateUser() {
+    createUserWidget->hide();
+    loginWidget->show();
+}
