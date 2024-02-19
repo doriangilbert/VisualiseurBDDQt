@@ -14,6 +14,7 @@ SOURCES += \
     MainWindow.cpp \
     ManageUser.cpp \
     Profile.cpp \
+    ReadWriteJson.cpp \
     SelectProfile.cpp \
     User.cpp \
     main.cpp
@@ -24,6 +25,7 @@ HEADERS += \
     MainWindow.h \
     ManageUser.h \
     Profile.h \
+    ReadWriteJson.h \
     SelectProfile.h \
     User.h
 
