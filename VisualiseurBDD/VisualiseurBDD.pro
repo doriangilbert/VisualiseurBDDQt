@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     CreateUser.cpp \
+    Data.cpp \
     Login.cpp \
     MainWindow.cpp \
     ManageUser.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 
 HEADERS += \
     CreateUser.h \
+    Data.h \
     Login.h \
     MainWindow.h \
     ManageUser.h \

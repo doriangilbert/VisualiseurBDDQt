@@ -2,6 +2,7 @@
 #include "ui_Login.h"
 #include <string>
 #include <iostream>
+#include "Data.h"
 using namespace std;
 
 //** Constructeur de la classe Login **//
@@ -27,10 +28,16 @@ void Login::on_seConnecterPushButton_clicked()
     string identifiant = ui->identifiantLineEdit->text().toStdString();
     string motDePasse = ui->motDePasseLineEdit->text().toStdString();
     cout << identifiant << " | " << motDePasse << endl;
-    //** Réinitialisation des champs **//
-    ui->identifiantLineEdit->setText(0);
-    ui->motDePasseLineEdit->setText(0);
-    //** Emission du signal loginButtonClicked **//
-    emit loginButtonClicked();
+    //** Vérification de la saisie pour connexion **//
+    for (User u : Data::getUsers()) {
+        if (identifiant == u.getIdentifier() && motDePasse == u.getPassword()) {
+            Data::setCurrentUser(u);
+            //** Réinitialisation des champs **//
+            ui->identifiantLineEdit->setText(0);
+            ui->motDePasseLineEdit->setText(0);
+            //** Emission du signal loginButtonClicked **//
+            emit loginButtonClicked();
+        }
+    }
 }
 

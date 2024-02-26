@@ -1,5 +1,11 @@
 #include "Profile.h"
 
+//** Construteur par défaut **//
+Profile::Profile()
+{
+
+}
+
 //** Le construction de confort de la classe. **//
 //** Nous indiquons le nom du profil **//
 Profile::Profile(string name)

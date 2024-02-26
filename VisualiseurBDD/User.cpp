@@ -1,5 +1,11 @@
 #include "User.h"
 
+//** Construteur par défaut **//
+User::User()
+{
+
+}
+
 //** Le construction de confort de la classe. **//
 //** Nous renseignons tous les attributs nécessaires **//
 User::User(string lastName, string firstName, string identifier, string password)

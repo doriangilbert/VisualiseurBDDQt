@@ -16,7 +16,8 @@ private:
     vector<Profile> profiles;
 
 public:
-    //** Constructeur **//
+    //** Constructeurs **//
+    User();
     User(string lastName, string firstName, string identifier, string password);
 
     //** Getter et Setter **//

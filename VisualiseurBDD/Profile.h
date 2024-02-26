@@ -11,7 +11,8 @@ private:
     string name;
 
 public:
-    //** Constructeur **//
+    //** Constructeurs **//
+    Profile();
     Profile(string name);
 
     //** Getter et Setter **//
