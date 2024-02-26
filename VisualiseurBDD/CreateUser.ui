@@ -67,6 +67,9 @@
    <property name="text">
     <string/>
    </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
   </widget>
   <widget class="QLineEdit" name="nomLineEdit">
    <property name="geometry">
@@ -202,6 +205,9 @@
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
    </property>
   </widget>
  </widget>
