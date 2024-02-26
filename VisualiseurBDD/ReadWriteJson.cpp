@@ -1,5 +1,6 @@
 #include "ReadWriteJson.h"
-//#include "User.h"
+#include "User.h"
+#include <iostream>
 
 int ReadWriteJson::readJson()
 {
@@ -13,19 +14,19 @@ int ReadWriteJson::readJson()
     QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
     QJsonObject sett2 = d.object();
     QJsonValue value = sett2.value(QString("appName"));
-    qWarning() << value;
+    //qWarning() << value;
     QJsonObject item = value.toObject();
     //qWarning() << tr("QJsonObject of description: ") << item;
 
     /* in case of string value get value and convert into string*/
     //qWarning() << tr("QJsonObject[appName] of description: ") << item["description"];
-    QJsonValue subobj = item["description"];
-    qWarning() << subobj.toString();
+    //QJsonValue subobj = item["description"];
+    //qWarning() << subobj.toString();
 
     /* in case of array get array and convert into string*/
     //qWarning() << tr("QJsonObject[appName] of value: ") << item["imp"];
-    QJsonArray test = item["imp"].toArray();
-    qWarning() << test[1].toString();
+    //QJsonArray test = item["imp"].toArray();
+    //qWarning() << test[1].toString();
 
     return 0;
 }
@@ -33,63 +34,60 @@ int ReadWriteJson::readJson()
 int ReadWriteJson::writeJson()
 {
     // Créer un objet Utilisateur
-    //User Gilbert = User("Gilbert", "Dorian", "AdminG", "passwordG");
-    //User Beunas = User("Beunas", "Antoine", "AdminB", "passwordB");
+    User Gilbert = User("Gilbert", "Dorian", "AdminG", "passwordG");
+    User Beunas = User("Beunas", "Antoine", "AdminB", "passwordB");
 
-    // Créer un objet JSON à partir de l'objet Utilisateur
-    QJsonObject account;
-    account["nom"] = "Gibert";
-    account["prenom"] = "Dorian";
-    account["identifiant"] = "AdminG";
-    account["motDePasse"] = "passwordG";
+    // Créer un objet JSON pour stocker un utilisateur
+    QJsonObject account1;
+    QJsonObject profiles1;
+    profiles1["defaut"]="Default";
+    profiles1["bonjour"]="Hello";
+    account1["nom"] = QString::fromStdString(Gilbert.getLastName());
+    account1["prenom"] = QString::fromStdString(Gilbert.getFirstName());
+    account1["identifiant"] = QString::fromStdString(Gilbert.getIdentifier());
+    account1["motDePasse"] = QString::fromStdString(Gilbert.getPassword());
+    account1["profils"]=profiles1;
 
-    QJsonObject profiles;
-    profiles["Defaut"]="Default";
-    profiles["Bonjour"]="Hello";
-    account["Profils"]=profiles;
+    //On en crée un 2ème
+    QJsonObject account2;
+    QJsonObject profiles2;
+    profiles2["defaut"]="Default";
+    profiles2["bonjour"]="Hello";
+    account2["nom"] = QString::fromStdString(Beunas.getLastName());
+    account2["prenom"] = QString::fromStdString(Beunas.getFirstName());
+    account2["identifiant"] = QString::fromStdString(Beunas.getIdentifier());
+    account2["motDePasse"] = QString::fromStdString(Beunas.getPassword());
+    account2["profils"]=profiles2;
 
-    //QJsonDocument jsonDoc(account);
+    //On met les 2 objets dans une liste
+    //vector<QJsonObject> qListe;
+    //qListe.push_back(account1);
+    //qListe.push_back(account2);
 
+    //Pour créer le document Json accueillant les objets précédemment crées
+    QByteArray ba = QJsonDocument(account1).toJson();
 
-    QByteArray ba = QJsonDocument(account).toJson();
+    //******* A effacer *******//
+    //Pour afficher le resultat sur la console
     QTextStream ts(stdout);
-    ts << "rendered JSON" << Qt::endl;
+    std::cout << "rendered JSON" << std::endl;
     ts << ba;
-    QFile fout("Users.json");
-    if (fout.open(QIODevice::WriteOnly))
+    //******* A effacer *******//
+
+    //Si non trouvé, le programme va créer le fichier
+    QFile file("Users.json");
+    //On ouvre le fichier en écriture seule
+    if (file.open(QIODevice::WriteOnly))
     {
-        fout.write(ba);
+        //Puis on écrit à l'intérieur de ce fichier le contenu du document Json.
+        file.write(ba);
+        file.close();
     }
     else
     {
+        //Si jamais il y a des problèmes avec des permissions
         qDebug() << "Impossible d'ouvrir le fichier pour l'enregistrement.";
     }
 
     return 0;
-
-    // Enregistrer l'objet JSON dans un fichier
-    /*QFile file("Users.json");
-    if (file.open(QIODevice::WriteOnly)) {
-        file.write(jsonDoc.toJson());
-        file.close();
-        qDebug() << "L'objet Utilisateur a été enregistré avec succès dans le fichier JSON.";
-    } else {
-        qDebug() << "Impossible d'ouvrir le fichier pour l'enregistrement.";
-    }*/
-
-
-
-    /*QJsonDocument jsonDoc(jsonObject);
-    // Enregistrer l'objet JSON dans un fichier
-    QFile file("Users.json");
-    if (file.open(QIODevice::WriteOnly)) {
-        file.write(jsonDoc.toJson());
-        file.close();
-        qDebug() << "L'objet Utilisateur a été enregistré avec succès dans le fichier JSON.";
-    } else {
-        qDebug() << "Impossible d'ouvrir le fichier pour l'enregistrement.";
-    }
-
-    return 0;
-    //return a.exec();*/
 }

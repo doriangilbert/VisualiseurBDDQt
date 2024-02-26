@@ -10,18 +10,16 @@
 #include <QFile>
 #include <QDebug>
 
+
 class ReadWriteJson
 {
 private:
-    //** Attributes **//
+    //** Attributs **//
     QJsonObject jsonObject;
 
 public:
-    QJsonObject getJsonObject();
-
-    void setJsonObject(QJsonObject jsonObject);
-
-    int readJson();
+    //** Méthodes **//
+    int static readJson();
 
     int static writeJson();
 };

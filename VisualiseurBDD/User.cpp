@@ -77,7 +77,6 @@ void User::setProfiles(vector<Profile> profiles)
 }
 
 
-
 //** Fonction ajoutant un profil à la liste de profils de l'utilisateur **//
 /* Si un profil identique (même nom de profil) existe déjà dans la liste de profils
  * de l'utilisateur, on n'ajoute pas le profil et on renvoie true comme booleen */
