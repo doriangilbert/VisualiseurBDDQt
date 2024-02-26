@@ -8,7 +8,7 @@
 class User
 {
 private:
-    //** Attributes **//
+    //** Attributs **//
     string lastName;
     string firstName;
     string identifier;
@@ -16,10 +16,10 @@ private:
     vector<Profile> profiles;
 
 public:
-    //** Constructor **//
+    //** Constructeur **//
     User(string lastName, string firstName, string identifier, string password);
 
-    //** Getter and Setter **//
+    //** Getter et Setter **//
     string getLastName();
     void setLastName(string lastName);
     string getFirstName();
@@ -31,7 +31,7 @@ public:
     vector<Profile> getProfiles();
     void setProfiles(vector<Profile> profiles);
 
-    //** Methods **//
+    //** Methodes **//
     bool AddProfile(Profile profile);
     void RemoveProfile(Profile profile);
 };

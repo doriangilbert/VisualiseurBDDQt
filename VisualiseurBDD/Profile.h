@@ -7,18 +7,18 @@ using namespace std;
 class Profile
 {
 private:
-    //** Attributes **//
+    //** Attributs **//
     string name;
 
 public:
-    //** Constructor **//
+    //** Constructeur **//
     Profile(string name);
 
-    //** Getter and Setter **//
+    //** Getter et Setter **//
     string getName();
     void setName(string name);
 
-    //** Methods **//
+    //** Methodes **//
 };
 
 #endif // PROFILE_H

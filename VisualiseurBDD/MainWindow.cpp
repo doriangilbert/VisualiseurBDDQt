@@ -4,6 +4,7 @@
 #include "CreateUser.h"
 #include "ManageUser.h"
 #include "SelectProfile.h"
+#include "ReadWriteJson.h"
 
 //** Constructeur de la classe MainWindow **//
 MainWindow::MainWindow(QWidget *parent)
@@ -12,6 +13,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     //** Initialisation de l'interface graphique **//
     ui->setupUi(this);
+
+    ReadWriteJson qjson;
+    qjson.writeJson();
 
     //** Initialisation de la page de connexion **//
     loginWidget = new Login(this);

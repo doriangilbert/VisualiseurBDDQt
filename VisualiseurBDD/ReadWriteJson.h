@@ -17,15 +17,13 @@ private:
     QJsonObject jsonObject;
 
 public:
-    ReadWriteJson();
-
     QJsonObject getJsonObject();
 
     void setJsonObject(QJsonObject jsonObject);
 
     int readJson();
 
-    int writeJson();
+    int static writeJson();
 };
 
 #endif // READWRITEJSON_H
