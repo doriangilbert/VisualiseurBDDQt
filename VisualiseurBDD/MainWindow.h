@@ -31,6 +31,7 @@ private:
     class ManageUser *manageUserWidget;
     //** Page de sélection d'un profil **//
     class SelectProfile *selectProfileWidget;
+    class CreateProfile *createProfileWidget;
 
 public slots:
     //** Slot permettant de masquer la page de connexion et d'afficher la page de gestion d'un utilisateur **//
@@ -43,6 +44,9 @@ public slots:
     void goToManageUserFromSelectProfile();
     //** Slot permettant de masquer la page de création d'un utilisateur et d'afficher la page de connexion **//
     void goToLoginFromCreateUser();
+
+    void goToCreateProfileFromSelectProfile();
+    void goToSelectProfileFromCreateProfile();
 };
 
 #endif // MAINWINDOW_H

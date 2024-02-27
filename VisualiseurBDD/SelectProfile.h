@@ -28,9 +28,13 @@ private slots:
     //** Slot appelé lors du clic sur le bouton valider **//
     void on_validerPushButton_clicked();
 
+    void on_creerProfilPushButton_clicked();
+
 signals:
     //** Signal émis lors du clic sur le bouton valider **//
     void validateButtonClicked();
+
+    void createProfileButtonClicked();
 };
 
 #endif // SELECTPROFILE_H

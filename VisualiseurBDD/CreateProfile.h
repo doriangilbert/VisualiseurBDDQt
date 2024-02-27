@@ -17,6 +17,12 @@ public:
 
 private:
     Ui::CreateProfile *ui;
+
+private slots:
+    void on_validerPushButton_clicked();
+
+signals:
+    void validateButtonClicked();
 };
 
 #endif // CREATEPROFILE_H

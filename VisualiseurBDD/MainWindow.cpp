@@ -4,6 +4,7 @@
 #include "CreateUser.h"
 #include "ManageUser.h"
 #include "SelectProfile.h"
+#include "CreateProfile.h"
 #include "ReadWriteJson.h"
 
 //** Constructeur de la classe MainWindow **//
@@ -36,6 +37,9 @@ MainWindow::MainWindow(QWidget *parent)
     selectProfileWidget = new SelectProfile(this);
     //** Masquage de la page de sélection d'un profil **//
     selectProfileWidget->hide();
+
+    createProfileWidget = new CreateProfile(this);
+    createProfileWidget->hide();
     
     //** Connexion des signaux et des slots **//
     connect(loginWidget, &Login::loginButtonClicked, this, &MainWindow::goToManageUserFromLogin);
@@ -43,6 +47,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(manageUserWidget, &ManageUser::disconnectButtonClicked, this, &MainWindow::goToLoginFromManageUser);
     connect(selectProfileWidget, &SelectProfile::validateButtonClicked, this, &MainWindow::goToManageUserFromSelectProfile);
     connect(createUserWidget, &CreateUser::validateButtonClicked, this, &MainWindow::goToLoginFromCreateUser);
+    connect(selectProfileWidget, &SelectProfile::createProfileButtonClicked, this, &MainWindow::goToCreateProfileFromSelectProfile);
+    connect(createProfileWidget, &CreateProfile::validateButtonClicked, this, &MainWindow::goToSelectProfileFromCreateProfile);
 }
 
 //** Destructeur de la classe MainWindow **//
@@ -80,4 +86,14 @@ void MainWindow::goToManageUserFromSelectProfile() {
 void MainWindow::goToLoginFromCreateUser() {
     createUserWidget->hide();
     loginWidget->show();
+}
+
+void MainWindow::goToCreateProfileFromSelectProfile() {
+    selectProfileWidget->hide();
+    createProfileWidget->show();
+}
+
+void MainWindow::goToSelectProfileFromCreateProfile() {
+    createProfileWidget->hide();
+    selectProfileWidget->show();
 }

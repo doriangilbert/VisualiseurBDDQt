@@ -35,3 +35,9 @@ void SelectProfile::on_validerPushButton_clicked()
     emit validateButtonClicked();
 }
 
+
+void SelectProfile::on_creerProfilPushButton_clicked()
+{
+    emit createProfileButtonClicked();
+}
+

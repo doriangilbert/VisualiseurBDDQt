@@ -71,6 +71,19 @@
     <string>Veuillez sélectionner le profil auquel vous souhaitez accéder</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="creerProfilPushButton">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>340</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Créer un profil</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
