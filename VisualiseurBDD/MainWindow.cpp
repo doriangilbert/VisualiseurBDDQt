@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ReadWriteJson qjson;
     qjson.readJson();
+    //qjson.writeJson();
 
     //** Initialisation de la page de connexion **//
     loginWidget = new Login(this);
