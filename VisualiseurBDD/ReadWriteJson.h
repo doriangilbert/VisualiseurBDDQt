@@ -9,6 +9,7 @@
 #include <QCoreApplication>
 #include <QFile>
 #include <QDebug>
+#include <QJsonArray>
 
 
 class ReadWriteJson

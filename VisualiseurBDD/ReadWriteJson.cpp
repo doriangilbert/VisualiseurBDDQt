@@ -1,5 +1,6 @@
 #include "ReadWriteJson.h"
 #include "User.h"
+#include "Data.h"
 #include <iostream>
 
 int ReadWriteJson::readJson()
@@ -36,36 +37,29 @@ int ReadWriteJson::writeJson()
     // Créer un objet Utilisateur
     User Gilbert = User("Gilbert", "Dorian", "AdminG", "passwordG");
     User Beunas = User("Beunas", "Antoine", "AdminB", "passwordB");
+    vector<User> Liste;
+    Liste.push_back(Gilbert);
+    Liste.push_back(Beunas);
 
-    // Créer un objet JSON pour stocker un utilisateur
-    QJsonObject account1;
-    QJsonObject profiles1;
-    profiles1["defaut"]="Default";
-    profiles1["bonjour"]="Hello";
-    account1["nom"] = QString::fromStdString(Gilbert.getLastName());
-    account1["prenom"] = QString::fromStdString(Gilbert.getFirstName());
-    account1["identifiant"] = QString::fromStdString(Gilbert.getIdentifier());
-    account1["motDePasse"] = QString::fromStdString(Gilbert.getPassword());
-    account1["profils"]=profiles1;
-
-    //On en crée un 2ème
-    QJsonObject account2;
-    QJsonObject profiles2;
-    profiles2["defaut"]="Default";
-    profiles2["bonjour"]="Hello";
-    account2["nom"] = QString::fromStdString(Beunas.getLastName());
-    account2["prenom"] = QString::fromStdString(Beunas.getFirstName());
-    account2["identifiant"] = QString::fromStdString(Beunas.getIdentifier());
-    account2["motDePasse"] = QString::fromStdString(Beunas.getPassword());
-    account2["profils"]=profiles2;
-
-    //On met les 2 objets dans une liste
-    //vector<QJsonObject> qListe;
-    //qListe.push_back(account1);
-    //qListe.push_back(account2);
+    QJsonArray all;
+    QJsonObject account;
+    QJsonArray profiles;
+    for(unsigned int j = 0; j < Liste.size(); j++)
+    {
+        for (unsigned int i = 0; i < Liste[j].getProfiles().size(); i++)
+        {
+            profiles.append(QString::fromStdString(Liste[j].getProfiles()[i].getName()));
+        }
+        account["nom"] = QString::fromStdString(Liste[j].getLastName());
+        account["prenom"] = QString::fromStdString(Liste[j].getFirstName());
+        account["identifiant"] = QString::fromStdString(Liste[j].getIdentifier());
+        account["motDePasse"] = QString::fromStdString(Liste[j].getPassword());
+        account["profils"]=profiles;
+        all.append(account);
+    }
 
     //Pour créer le document Json accueillant les objets précédemment crées
-    QByteArray ba = QJsonDocument(account1).toJson();
+    QByteArray ba = QJsonDocument(all).toJson();
 
     //******* A effacer *******//
     //Pour afficher le resultat sur la console
