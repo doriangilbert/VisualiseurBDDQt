@@ -19,6 +19,7 @@ public:
     explicit SelectProfile(QWidget *parent = nullptr);
     //** Destructeur de la classe SelectProfile **//
     ~SelectProfile();
+    void load();
 
 private:
     //** Interface graphique de la fenêtre de sélection d'un profil **//

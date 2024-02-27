@@ -28,16 +28,20 @@ void Login::on_seConnecterPushButton_clicked()
     string identifiant = ui->identifiantLineEdit->text().toStdString();
     string motDePasse = ui->motDePasseLineEdit->text().toStdString();
     cout << identifiant << " | " << motDePasse << endl;
+    bool ok = false;
     //** Vérification de la saisie pour connexion **//
     for (User u : Data::getUsers()) {
         if (identifiant == u.getIdentifier() && motDePasse == u.getPassword()) {
             Data::setCurrentUser(u);
-            //** Réinitialisation des champs **//
-            ui->identifiantLineEdit->setText(0);
-            ui->motDePasseLineEdit->setText(0);
-            //** Emission du signal loginButtonClicked **//
-            emit loginButtonClicked();
+            ok = true;
         }
+    }
+    if (ok == true) {
+        //** Réinitialisation des champs **//
+        ui->identifiantLineEdit->setText(0);
+        ui->motDePasseLineEdit->setText(0);
+        //** Emission du signal loginButtonClicked **//
+        emit loginButtonClicked();
     }
 }
 

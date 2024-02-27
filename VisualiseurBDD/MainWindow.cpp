@@ -67,6 +67,7 @@ void MainWindow::goToManageUserFromLogin() {
 //** Slot permettant de masquer la page de gestion d'un utilisateur et d'afficher la page de sélection d'un profil **//
 void MainWindow::goToSelectProfileFromManageUser() {
     manageUserWidget->hide();
+    selectProfileWidget->load();
     selectProfileWidget->show();
 }
 
@@ -95,5 +96,6 @@ void MainWindow::goToCreateProfileFromSelectProfile() {
 
 void MainWindow::goToSelectProfileFromCreateProfile() {
     createProfileWidget->hide();
+    selectProfileWidget->load();
     selectProfileWidget->show();
 }

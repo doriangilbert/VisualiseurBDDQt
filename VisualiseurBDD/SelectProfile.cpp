@@ -2,6 +2,7 @@
 #include "ui_SelectProfile.h"
 #include "Profile.h"
 #include <iostream>
+#include "Data.h"
 
 //** Constructeur de la classe SelectProfile **//
 SelectProfile::SelectProfile(QWidget *parent)
@@ -10,13 +11,15 @@ SelectProfile::SelectProfile(QWidget *parent)
 {
     //** Initialisation de l'interface graphique **//
     ui->setupUi(this);
+}
 
-    Profile profil1 = Profile("Profil 1");
-    Profile profil2 = Profile("Profil 2");
-    Profile profil3 = Profile("Profil 3");
-    ui->selectionnerProfilComboBox->addItem("Profil 1", "Profil 1");
-    ui->selectionnerProfilComboBox->addItem("Profil 2", "Profil 2");
-    ui->selectionnerProfilComboBox->addItem("Profil 3", "Profil 4");
+void SelectProfile::load() {
+    QList<QString> listeChoix = {};
+    for (Profile p : Data::getCurrentUser().getProfiles()) {
+        listeChoix.append(QString::fromStdString(p.getName()));
+    }
+    ui->selectionnerProfilComboBox->clear();
+    ui->selectionnerProfilComboBox->addItems(listeChoix);
 }
 
 //** Destructeur de la classe SelectProfile **//
