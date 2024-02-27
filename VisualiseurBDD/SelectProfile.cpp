@@ -14,7 +14,7 @@ SelectProfile::SelectProfile(QWidget *parent)
 }
 
 void SelectProfile::load() {
-    QList<QString> listeChoix = {};
+    QList<QString> listeChoix;
     for (Profile p : Data::getCurrentUser().getProfiles()) {
         listeChoix.append(QString::fromStdString(p.getName()));
     }
@@ -34,6 +34,11 @@ void SelectProfile::on_validerPushButton_clicked()
 {
     string selectionProfil = ui->selectionnerProfilComboBox->currentText().toStdString();
     cout << selectionProfil << endl;
+    for (Profile p : Data::getCurrentUser().getProfiles()) {
+        if(p.getName() == selectionProfil) {
+            Data::setCurrentProfile(p);
+        }
+    }
     //** Emission du signal validateButtonClicked **//
     emit validateButtonClicked();
 }

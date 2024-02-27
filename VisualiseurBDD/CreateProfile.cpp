@@ -21,7 +21,11 @@ void CreateProfile::on_validerPushButton_clicked()
     string nomProfil = ui->nomProfilLineEdit->text().toStdString();
     cout << nomProfil << endl;
     Profile newProfile = Profile(nomProfil);
-    Data::getCurrentUser().AddProfile(newProfile);
+    User currentUser = Data::getCurrentUser();
+    currentUser.AddProfile(newProfile);
+    Data::setCurrentUser(currentUser);
+    Data::deleteUser(Data::getCurrentUser().getIdentifier());
+    Data::addUser(currentUser);
     ui->nomProfilLineEdit->setText(0);
     emit validateButtonClicked();
 }

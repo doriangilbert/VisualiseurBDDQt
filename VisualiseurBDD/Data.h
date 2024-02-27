@@ -20,6 +20,7 @@ public:
     static Profile getCurrentProfile();
     static void setCurrentProfile(Profile newCurrentProfile);
     static void addUser(User newCurrentUser);
+    static void deleteUser(string userId);
 };
 
 #endif // DATA_H

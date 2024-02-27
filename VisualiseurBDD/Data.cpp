@@ -39,4 +39,12 @@ void Data::addUser(User newCurrentUser)
     users.push_back(newCurrentUser);
 }
 
+void Data::deleteUser(string userId) {
+    for (int i = 0 ; i < users.size() ; i++) {
+        if (users[i].getIdentifier() == userId) {
+            users.erase(users.begin()+i);
+        }
+    }
+}
+
 Data::Data() {}

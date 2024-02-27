@@ -34,7 +34,6 @@ void CreateUser::on_validerPushButton_clicked()
     bool isAdmin = ui->adminCheckBox->isChecked();
     cout << nom << " | " << prenom << " | " << identifiant << " | " << motDePasse << " | " << confirmationMotDePasse << " | " << isAdmin << endl;
     User newUser = User(nom, prenom, identifiant, motDePasse);
-    newUser.AddProfile(Profile("default"));
     Data::addUser(newUser);
     //** Réinitialisation des champs **//
     ui->nomLineEdit->setText(0);
