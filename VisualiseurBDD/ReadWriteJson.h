@@ -14,15 +14,12 @@
 
 class ReadWriteJson
 {
-private:
-    //** Attributs **//
-    QJsonObject jsonObject;
 
 public:
     //** Méthodes **//
-    int static readJson();
+    bool static readJson();
 
-    int static writeJson();
+    bool static writeJson();
 };
 
 #endif // READWRITEJSON_H

@@ -3,57 +3,79 @@
 #include "Data.h"
 #include <iostream>
 
-int ReadWriteJson::readJson()
+bool ReadWriteJson::readJson()
 {
-    QString val;
+    QByteArray val;
     QFile file;
     file.setFileName("Users.json");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    //Si le fichier n'existe pas
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << "Le fichier n'existe pas";
+        //On termine le programme en remontant l'erreur
+        return false;
+    }
     val = file.readAll();
     file.close();
-    qWarning() << val;
-    QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
-    QJsonObject sett2 = d.object();
+    QJsonDocument doc = QJsonDocument::fromJson(val);
+    QJsonObject sett2 = doc.object();
     QJsonValue value = sett2.value(QString("appName"));
-    //qWarning() << value;
     QJsonObject item = value.toObject();
-    //qWarning() << tr("QJsonObject of description: ") << item;
 
-    /* in case of string value get value and convert into string*/
-    //qWarning() << tr("QJsonObject[appName] of description: ") << item["description"];
-    //QJsonValue subobj = item["description"];
-    //qWarning() << subobj.toString();
+    //******* Programme Martin *******//
+    // Vérifier si l'objet racine contient la clé "users"
+    if (rootObject.contains("users") && rootObject["users"].isArray()) {
 
-    /* in case of array get array and convert into string*/
-    //qWarning() << tr("QJsonObject[appName] of value: ") << item["imp"];
-    //QJsonArray test = item["imp"].toArray();
-    //qWarning() << test[1].toString();
+        // Obtenir le tableau des utilisateurs et le parcourir
+        QJsonArray usersArray = rootObject["users"].toArray();
+        for (const QJsonValue &userValue : usersArray) {
+            QJsonObject userObject = userValue.toObject();
 
-    return 0;
+            // l'ajouter
+            User *user = new User(userObject.value("login").toString(), userObject.value("password").toString());
+            allUsers.append(user);
+
+            // parcourir ses profiles:
+            QJsonArray profilesArray = userObject["profiles"].toArray();
+            for (const QJsonValue &profileValue : profilesArray) {
+                QJsonObject profileObject = profileValue.toObject();
+
+                // l'ajouter
+                Profile profile(profileObject.value("name").toString());
+                user->addProfile(profile);
+            }
+        }
+    }
+    //******* Programme Martin *******//
+
+    return true;
 }
 
-int ReadWriteJson::writeJson()
+bool ReadWriteJson::writeJson()
 {
+    //******* A effacer *******//
     // Créer un objet Utilisateur
     User Gilbert = User("Gilbert", "Dorian", "AdminG", "passwordG");
     User Beunas = User("Beunas", "Antoine", "AdminB", "passwordB");
     vector<User> Liste;
     Liste.push_back(Gilbert);
     Liste.push_back(Beunas);
+    //******* A effacer *******//
 
     QJsonArray all;
     QJsonObject account;
     QJsonArray profiles;
-    for(unsigned int j = 0; j < Liste.size(); j++)
+    //for(unsigned int j = 0; j < Liste.size(); j++)
+    for(User Util : Data::getUsers())
     {
-        for (unsigned int i = 0; i < Liste[j].getProfiles().size(); i++)
+        for (unsigned int i = 0; i < Util.getProfiles().size(); i++)
         {
-            profiles.append(QString::fromStdString(Liste[j].getProfiles()[i].getName()));
+            profiles.append(QString::fromStdString(Util.getProfiles()[i].getName()));
         }
-        account["nom"] = QString::fromStdString(Liste[j].getLastName());
-        account["prenom"] = QString::fromStdString(Liste[j].getFirstName());
-        account["identifiant"] = QString::fromStdString(Liste[j].getIdentifier());
-        account["motDePasse"] = QString::fromStdString(Liste[j].getPassword());
+        account["nom"] = QString::fromStdString(Util.getLastName());
+        account["prenom"] = QString::fromStdString(Util.getFirstName());
+        account["identifiant"] = QString::fromStdString(Util.getIdentifier());
+        account["motDePasse"] = QString::fromStdString(Util.getPassword());
         account["profils"]=profiles;
         all.append(account);
     }
@@ -81,7 +103,8 @@ int ReadWriteJson::writeJson()
     {
         //Si jamais il y a des problèmes avec des permissions
         qDebug() << "Impossible d'ouvrir le fichier pour l'enregistrement.";
+        return false;
     }
 
-    return 0;
+    return true;
 }

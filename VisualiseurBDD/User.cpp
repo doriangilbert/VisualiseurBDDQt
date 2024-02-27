@@ -14,6 +14,8 @@ User::User(string lastName, string firstName, string identifier, string password
     this->firstName = firstName;
     this->identifier = identifier;
     this->password = password;
+    Profile defaut = Profile("Defaut");
+    this->profiles = vector<Profile>{defaut};
 }
 
 //** Getter de l'attribut lastName **//
