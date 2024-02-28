@@ -6,6 +6,7 @@
 #include "SelectProfile.h"
 #include "CreateProfile.h"
 #include "ReadWriteJson.h"
+#include "Data.h"
 
 //** Constructeur de la classe MainWindow **//
 MainWindow::MainWindow(QWidget *parent)
@@ -17,17 +18,28 @@ MainWindow::MainWindow(QWidget *parent)
 
     ReadWriteJson qjson;
     qjson.readJson();
-    //qjson.writeJson();
 
     //** Initialisation de la page de connexion **//
     loginWidget = new Login(this);
-    //** Masquage de la page de connexion **//
-    loginWidget->hide();
 
     //** Initialisation de la page de création d'un utilisateur **//
     createUserWidget = new CreateUser(this);
-    //** Affichage de la page de création d'un utilisateur **//
-    createUserWidget->show();
+
+    //** Si il n'y a pas d'utilisateurs **//
+    if (Data::getUsers().size() == 0)
+    {
+        //** Masquage de la page de connexion **//
+        loginWidget->hide();
+        //** Affichage de la page de création d'un utilisateur **//
+        createUserWidget->show();
+    }
+    else
+    {
+        //** Masquage de la page de création d'un utilisateur **//
+        createUserWidget->hide();
+        //** Affichage de la page de connexion **//
+        loginWidget->show();
+    }
 
     //** Initialisation de la page de gestion d'un utilisateur **//
     manageUserWidget = new ManageUser(this);

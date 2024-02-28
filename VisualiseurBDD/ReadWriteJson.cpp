@@ -16,6 +16,14 @@ bool ReadWriteJson::readJson()
         return false;
     }
     val = file.readAll();
+
+    //******* A effacer *******//
+    //Pour afficher le resultat sur la console
+    QTextStream ts(stdout);
+    std::cout << "rendered JSON" << std::endl;
+    ts << val;
+    //******* A effacer *******//
+
     file.close();
     QJsonDocument doc = QJsonDocument::fromJson(val);
     QJsonObject AllObjects = doc.object();
@@ -30,21 +38,20 @@ bool ReadWriteJson::readJson()
         {
             //On transforme ces users sous format Json
             QJsonObject userObject = userValue.toObject();
-            //Afin de les ajouter
+            //Afin de les créer
             User user = User(userObject.value("nom").toString().toStdString(), userObject.value("prenom").toString().toStdString(), userObject.value("identifiant").toString().toStdString(), userObject.value("motDePasse").toString().toStdString(), false);
-            //all.append(user);
-            Data::addUser(user);
 
             //On va ensuite parcourir les profils du user venant d'être ajouté
-            QJsonArray profilesArray = userObject["profiles"].toArray();
+            QJsonArray profilesArray = userObject["profils"].toArray();
             for (const QJsonValue &profileValue : profilesArray)
             {
-                QJsonObject profileObject = profileValue.toObject();
-
-                //On ajoute le profil comme on a ajouté l'utilisateur
-                Profile profile(profileObject.value("name").toString().toStdString());
+                //On ajoute le profil
+                Profile profile(profileValue.toString().toStdString());
+                cout << profile.getName();
                 user.AddProfile(profile);
             }
+            //Puis on ajoute l'utilisateur à la liste d'utilisateurs
+            Data::addUser(user);
         }
         //Si tout s'est bien passé
         return true;
