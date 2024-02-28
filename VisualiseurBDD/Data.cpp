@@ -40,7 +40,7 @@ void Data::addUser(User newCurrentUser)
 }
 
 void Data::deleteUser(string userId) {
-    for (int i = 0 ; i < users.size() ; i++) {
+    for (size_t i = 0 ; i < users.size() ; i++) {
         if (users[i].getIdentifier() == userId) {
             users.erase(users.begin()+i);
         }

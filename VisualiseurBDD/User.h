@@ -17,7 +17,7 @@ private:
 public:
     //** Constructeurs **//
     User();
-    User(string lastName, string firstName, string identifier, string password);
+    User(string lastName, string firstName, string identifier, string password, bool news);
 
     //** Getter et Setter **//
     string getLastName();

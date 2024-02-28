@@ -4,6 +4,7 @@
 #include <iostream>
 #include "User.h"
 #include "Data.h"
+#include "ReadWriteJson.h"
 using namespace std;
 
 //** Constructeur de la classe CreateUser **//
@@ -33,8 +34,10 @@ void CreateUser::on_validerPushButton_clicked()
     string confirmationMotDePasse = ui->confirmationMotDePasseLineEdit->text().toStdString();
     bool isAdmin = ui->adminCheckBox->isChecked();
     cout << nom << " | " << prenom << " | " << identifiant << " | " << motDePasse << " | " << confirmationMotDePasse << " | " << isAdmin << endl;
-    User newUser = User(nom, prenom, identifiant, motDePasse);
+    User newUser = User(nom, prenom, identifiant, motDePasse, 1);
     Data::addUser(newUser);
+    ReadWriteJson qjson;
+    qjson.writeJson();
     //** Réinitialisation des champs **//
     ui->nomLineEdit->setText(0);
     ui->prenomLineEdit->setText(0);

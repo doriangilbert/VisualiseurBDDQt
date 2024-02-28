@@ -3,6 +3,7 @@
 #include "Profile.h"
 #include <iostream>
 #include "Data.h"
+#include "ReadWriteJson.h"
 
 CreateProfile::CreateProfile(QWidget *parent)
     : QWidget(parent)
@@ -21,11 +22,15 @@ void CreateProfile::on_validerPushButton_clicked()
     string nomProfil = ui->nomProfilLineEdit->text().toStdString();
     cout << nomProfil << endl;
     Profile newProfile = Profile(nomProfil);
+
     User currentUser = Data::getCurrentUser();
     currentUser.AddProfile(newProfile);
     Data::setCurrentUser(currentUser);
     Data::deleteUser(Data::getCurrentUser().getIdentifier());
     Data::addUser(currentUser);
+    Data::getCurrentUser().AddProfile(newProfile);
+    ReadWriteJson qjson;
+    qjson.writeJson();
     ui->nomProfilLineEdit->setText(0);
     emit validateButtonClicked();
 }

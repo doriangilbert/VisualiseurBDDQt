@@ -31,7 +31,7 @@ bool ReadWriteJson::readJson()
             //On transforme ces users sous format Json
             QJsonObject userObject = userValue.toObject();
             //Afin de les ajouter
-            User user = User(userObject.value("nom").toString().toStdString(), userObject.value("prenom").toString().toStdString(), userObject.value("identifiant").toString().toStdString(), userObject.value("motDePasse").toString().toStdString());
+            User user = User(userObject.value("nom").toString().toStdString(), userObject.value("prenom").toString().toStdString(), userObject.value("identifiant").toString().toStdString(), userObject.value("motDePasse").toString().toStdString(), false);
             //all.append(user);
             Data::addUser(user);
 
@@ -55,19 +55,9 @@ bool ReadWriteJson::readJson()
 
 bool ReadWriteJson::writeJson()
 {
-    //******* A effacer *******//
-    // Créer un objet Utilisateur
-    User Gilbert = User("Gilbert", "Dorian", "AdminG", "passwordG");
-    User Beunas = User("Beunas", "Antoine", "AdminB", "passwordB");
-    vector<User> Liste;
-    Liste.push_back(Gilbert);
-    Liste.push_back(Beunas);
-    //******* A effacer *******//
-
     QJsonArray all;
     QJsonObject account;
     QJsonArray profiles;
-    //for(User Util : Liste)
     for(User Util : Data::getUsers())
     {
         for (unsigned int i = 0; i < Util.getProfiles().size(); i++)

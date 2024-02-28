@@ -8,14 +8,17 @@ User::User()
 
 //** Le constructeur de confort de la classe. **//
 //** Nous renseignons tous les attributs nécessaires **//
-User::User(string lastName, string firstName, string identifier, string password)
+User::User(string lastName, string firstName, string identifier, string password, bool news)
 {
     this->lastName = lastName;
     this->firstName = firstName;
     this->identifier = identifier;
     this->password = password;
-    Profile defaut = Profile("Defaut");
-    this->profiles = vector<Profile>{defaut};
+    if (news == true)
+    {
+        Profile defaut = Profile("Defaut");
+        this->profiles = vector<Profile>{defaut};
+    }
 }
 
 //** Getter de l'attribut lastName **//
