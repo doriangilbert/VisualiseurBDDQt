@@ -31,18 +31,21 @@ void CreateUser::on_validerPushButton_clicked()
     string motDePasse = ui->motDePasseLineEdit->text().toStdString();
     string confirmationMotDePasse = ui->confirmationMotDePasseLineEdit->text().toStdString();
     bool isAdmin = ui->adminCheckBox->isChecked();
-    User newUser = User(nom, prenom, identifiant, motDePasse, isAdmin,1);
-    Data::addUser(newUser);
-    ReadWriteJson qjson;
-    qjson.writeJson();
-    //** Réinitialisation des champs **//
-    ui->nomLineEdit->setText(0);
-    ui->prenomLineEdit->setText(0);
-    ui->identifiantLineEdit->setText(0);
-    ui->motDePasseLineEdit->setText(0);
-    ui->confirmationMotDePasseLineEdit->setText(0);
-    ui->adminCheckBox->setChecked(0);
-    //** Emission du signal validateButtonClicked **//
-    emit validateButtonClicked();
+    if (motDePasse == confirmationMotDePasse)
+    {
+        User newUser = User(nom, prenom, identifiant, motDePasse, isAdmin,1);
+        Data::addUser(newUser);
+        ReadWriteJson qjson;
+        qjson.writeJson();
+        //** Réinitialisation des champs **//
+        ui->nomLineEdit->setText(0);
+        ui->prenomLineEdit->setText(0);
+        ui->identifiantLineEdit->setText(0);
+        ui->motDePasseLineEdit->setText(0);
+        ui->confirmationMotDePasseLineEdit->setText(0);
+        ui->adminCheckBox->setChecked(0);
+        //** Emission du signal validateButtonClicked **//
+        emit validateButtonClicked();
+    }
 }
 
