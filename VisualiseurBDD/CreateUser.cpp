@@ -1,7 +1,5 @@
 #include "CreateUser.h"
 #include "ui_CreateUser.h"
-#include <string>
-#include <iostream>
 #include "User.h"
 #include "Data.h"
 #include "ReadWriteJson.h"
@@ -32,8 +30,7 @@ void CreateUser::on_validerPushButton_clicked()
     string identifiant = ui->identifiantLineEdit->text().toStdString();
     string motDePasse = ui->motDePasseLineEdit->text().toStdString();
     string confirmationMotDePasse = ui->confirmationMotDePasseLineEdit->text().toStdString();
-    bool isAdmin = ui->adminCheckBox->isChecked();
-    cout << nom << " | " << prenom << " | " << identifiant << " | " << motDePasse << " | " << confirmationMotDePasse << " | " << isAdmin << endl;
+    //bool isAdmin = ui->adminCheckBox->isChecked();
     User newUser = User(nom, prenom, identifiant, motDePasse, 1);
     Data::addUser(newUser);
     ReadWriteJson qjson;

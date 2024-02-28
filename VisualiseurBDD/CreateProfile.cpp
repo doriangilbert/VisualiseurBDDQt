@@ -1,7 +1,6 @@
 #include "CreateProfile.h"
 #include "ui_CreateProfile.h"
 #include "Profile.h"
-#include <iostream>
 #include "Data.h"
 #include "ReadWriteJson.h"
 
@@ -20,7 +19,6 @@ CreateProfile::~CreateProfile()
 void CreateProfile::on_validerPushButton_clicked()
 {
     string nomProfil = ui->nomProfilLineEdit->text().toStdString();
-    cout << nomProfil << endl;
     Profile newProfile = Profile(nomProfil);
 
     User currentUser = Data::getCurrentUser();

@@ -1,7 +1,6 @@
 #include "Login.h"
 #include "ui_Login.h"
 #include <string>
-#include <iostream>
 #include "Data.h"
 using namespace std;
 
@@ -27,7 +26,6 @@ void Login::on_seConnecterPushButton_clicked()
     //** Récupération des informations saisies par l'utilisateur **//
     string identifiant = ui->identifiantLineEdit->text().toStdString();
     string motDePasse = ui->motDePasseLineEdit->text().toStdString();
-    cout << identifiant << " | " << motDePasse << endl;
     bool ok = false;
     //** Vérification de la saisie pour connexion **//
     for (User u : Data::getUsers()) {

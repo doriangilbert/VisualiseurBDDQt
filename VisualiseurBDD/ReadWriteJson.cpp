@@ -1,8 +1,8 @@
 #include "ReadWriteJson.h"
-#include "User.h"
 #include "Data.h"
-#include <iostream>
 
+//** Fonction pour reprendre les données du fichier Json et les transformer en données "utilisables" dans notre application: **//
+//** liste des utilisateurs / utilisateurs / liste de profils **//
 bool ReadWriteJson::readJson()
 {
     QByteArray val;
@@ -16,13 +16,6 @@ bool ReadWriteJson::readJson()
         return false;
     }
     val = file.readAll();
-
-    //******* A effacer *******//
-    //Pour afficher le resultat sur la console
-    QTextStream ts(stdout);
-    std::cout << "rendered JSON" << std::endl;
-    ts << val;
-    //******* A effacer *******//
 
     file.close();
     QJsonDocument doc = QJsonDocument::fromJson(val);
@@ -47,7 +40,6 @@ bool ReadWriteJson::readJson()
             {
                 //On ajoute le profil
                 Profile profile(profileValue.toString().toStdString());
-                cout << profile.getName();
                 user.AddProfile(profile);
             }
             //Puis on ajoute l'utilisateur à la liste d'utilisateurs
@@ -60,22 +52,29 @@ bool ReadWriteJson::readJson()
     return false;
 }
 
+//** Fonction sauvegardant toutes les données de tous les utilisateurs dans un fichier Json **//
 bool ReadWriteJson::writeJson()
 {
     QJsonArray all;
     QJsonObject account;
     QJsonArray profiles;
+    //On parcourt la liste des utilisateurs
     for(User Util : Data::getUsers())
     {
+        //On parcourt tous les profils de l'utilisateur
         for (unsigned int i = 0; i < Util.getProfiles().size(); i++)
         {
+            //On transforme la liste d'objets "simples" en liste d'objet Json
             profiles.append(QString::fromStdString(Util.getProfiles()[i].getName()));
         }
+        //On transforme les string "simples" en string Json
         account["nom"] = QString::fromStdString(Util.getLastName());
         account["prenom"] = QString::fromStdString(Util.getFirstName());
         account["identifiant"] = QString::fromStdString(Util.getIdentifier());
         account["motDePasse"] = QString::fromStdString(Util.getPassword());
+        //On ajoute la liste de profils Json à l'objet user Json
         account["profils"]=profiles;
+        //Puis on ajoute tous les users Json à la liste de users Json
         all.append(account);
     }
 
@@ -83,13 +82,6 @@ bool ReadWriteJson::writeJson()
     QJsonObject AllObjects;
     AllObjects["users"] = all;
     QByteArray ba = QJsonDocument(AllObjects).toJson();
-
-    //******* A effacer *******//
-    //Pour afficher le resultat sur la console
-    QTextStream ts(stdout);
-    std::cout << "rendered JSON" << std::endl;
-    ts << ba;
-    //******* A effacer *******//
 
     //Si non trouvé, le programme va créer le fichier
     QFile file("Users.json");
