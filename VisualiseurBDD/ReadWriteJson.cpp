@@ -61,10 +61,10 @@ bool ReadWriteJson::writeJson()
 {
     QJsonArray all;
     QJsonObject account;
-    QJsonArray profiles;
     //On parcourt la liste des utilisateurs
     for(User Util : Data::getUsers())
     {
+        QJsonArray profiles;
         //On parcourt tous les profils de l'utilisateur
         for (unsigned int i = 0; i < Util.getProfiles().size(); i++)
         {
