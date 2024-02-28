@@ -32,7 +32,11 @@ bool ReadWriteJson::readJson()
             //On transforme ces users sous format Json
             QJsonObject userObject = userValue.toObject();
             //Afin de les créer
-            User user = User(userObject.value("nom").toString().toStdString(), userObject.value("prenom").toString().toStdString(), userObject.value("identifiant").toString().toStdString(), userObject.value("motDePasse").toString().toStdString(), userObject.value("nom").toBool(), 0);
+            User user = User(userObject.value("nom").toString().toStdString(), userObject.value("prenom").toString().toStdString(), userObject.value("identifiant").toString().toStdString(), userObject.value("motDePasse").toString().toStdString(), userObject.value("admin").toBool(), 0);
+            if (userObject.value("admin").toString().toStdString() == "1")
+            {
+                user.setAdmin(1);
+            }
 
             //On va ensuite parcourir les profils du user venant d'être ajouté
             QJsonArray profilesArray = userObject["profils"].toArray();
