@@ -65,6 +65,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(createUserWidget, &CreateUser::validateButtonClicked, this, &MainWindow::goToLoginFromCreateUser);
     connect(selectProfileWidget, &SelectProfile::createProfileButtonClicked, this, &MainWindow::goToCreateProfileFromSelectProfile);
     connect(createProfileWidget, &CreateProfile::validateButtonClicked, this, &MainWindow::goToSelectProfileFromCreateProfile);
+    connect(manageUserWidget, &ManageUser::createUserButtonClicked, this, &MainWindow::goToCreateUserFromManageUser);
 }
 
 //** Destructeur de la classe MainWindow **//
@@ -78,6 +79,8 @@ MainWindow::~MainWindow()
 void MainWindow::goToManageUserFromLogin() {
     loginWidget->hide();
     manageUserWidget->show();
+    //** Initialisation de la page de gestion d'un utilisateur **//
+    manageUserWidget->load();
 }
 
 //** Slot permettant de masquer la page de gestion d'un utilisateur et d'afficher la page de sélection d'un profil **//
@@ -98,6 +101,8 @@ void MainWindow::goToLoginFromManageUser() {
 void MainWindow::goToManageUserFromSelectProfile() {
     selectProfileWidget->hide();
     manageUserWidget->show();
+    //** Initialisation de la page de gestion d'un utilisateur **//
+    manageUserWidget->load();
 }
 
 //** Slot permettant de masquer la page de création d'un utilisateur et d'afficher la page de connexion **//
@@ -118,4 +123,10 @@ void MainWindow::goToSelectProfileFromCreateProfile() {
     selectProfileWidget->show();
     //** Initialisation de la page de sélection d'un profil **//
     selectProfileWidget->load();
+}
+
+//** Slot permettant de masquer la page de gestion d'un utilisateur et d'afficher la page de création d'un utilisateur **//
+void MainWindow::goToCreateUserFromManageUser() {
+    manageUserWidget->hide();
+    createUserWidget->show();
 }

@@ -31,6 +31,7 @@ void Login::on_seConnecterPushButton_clicked()
     for (User u : Data::getUsers()) {
         if (identifiant == u.getIdentifier() && motDePasse == u.getPassword()) {
             Data::setCurrentUser(u);
+            Data::setCurrentProfile(Profile());
             ok = true;
         }
     }

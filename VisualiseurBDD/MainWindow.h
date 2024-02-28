@@ -49,6 +49,8 @@ public slots:
     void goToCreateProfileFromSelectProfile();
     //** Slot permettant de masquer la page de création d'un profil et d'afficher la page de sélection d'un profil **//
     void goToSelectProfileFromCreateProfile();
+    //** Slot permettant de masquer la page de gestion d'un utilisateur et d'afficher la page de création d'un utilisateur **//
+    void goToCreateUserFromManageUser();
 };
 
 #endif // MAINWINDOW_H

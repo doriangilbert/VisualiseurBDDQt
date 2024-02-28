@@ -30,7 +30,7 @@
    <property name="geometry">
     <rect>
      <x>270</x>
-     <y>200</y>
+     <y>240</y>
      <width>103</width>
      <height>24</height>
     </rect>
@@ -56,6 +56,97 @@
    </property>
    <property name="text">
     <string>Gestion de l'utilisateur</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="creerUtilisateurPushButton">
+   <property name="geometry">
+    <rect>
+     <x>469</x>
+     <y>340</y>
+     <width>121</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Créer un utilisateur</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>120</y>
+     <width>111</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Utilisateur courant : </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>150</y>
+     <width>81</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Profil courant :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="utilisateurCourantLabel">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>120</y>
+     <width>261</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pas d'utilisateur courant</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="profilCourantLabel">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>150</y>
+     <width>261</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pas de profil courant</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>180</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Statut du compte :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="statutCompteLabel">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>180</y>
+     <width>261</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Utilisateur</string>
    </property>
   </widget>
  </widget>
