@@ -8,12 +8,13 @@ User::User()
 
 //** Le constructeur de confort de la classe. **//
 //** Nous renseignons tous les attributs nécessaires **//
-User::User(string lastName, string firstName, string identifier, string password, bool news)
+User::User(string lastName, string firstName, string identifier, string password, bool admin, bool news)
 {
     this->lastName = lastName;
     this->firstName = firstName;
     this->identifier = identifier;
     this->password = password;
+    this->admin = admin;
     if (news == true)
     {
         Profile defaut = Profile("Defaut");
@@ -67,6 +68,18 @@ string User::getPassword()
 void User::setPassword(string password)
 {
     this->password = password;
+}
+
+//** Getter de l'attribut admin **//
+bool User::getAdmin()
+{
+    return this->admin;
+}
+
+//** Setter de l'attribut admin **//
+void User::setAdmin(bool admin)
+{
+    this->admin = admin;
 }
 
 //** Getter de l'attribut profiles **//

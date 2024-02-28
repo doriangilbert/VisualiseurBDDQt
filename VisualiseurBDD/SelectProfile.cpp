@@ -1,7 +1,6 @@
 #include "SelectProfile.h"
 #include "ui_SelectProfile.h"
 #include "Profile.h"
-#include <iostream>
 #include "Data.h"
 
 //** Constructeur de la classe SelectProfile **//

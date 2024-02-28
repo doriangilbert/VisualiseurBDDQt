@@ -30,8 +30,8 @@ void CreateUser::on_validerPushButton_clicked()
     string identifiant = ui->identifiantLineEdit->text().toStdString();
     string motDePasse = ui->motDePasseLineEdit->text().toStdString();
     string confirmationMotDePasse = ui->confirmationMotDePasseLineEdit->text().toStdString();
-    //bool isAdmin = ui->adminCheckBox->isChecked();
-    User newUser = User(nom, prenom, identifiant, motDePasse, 1);
+    bool isAdmin = ui->adminCheckBox->isChecked();
+    User newUser = User(nom, prenom, identifiant, motDePasse, isAdmin,1);
     Data::addUser(newUser);
     ReadWriteJson qjson;
     qjson.writeJson();

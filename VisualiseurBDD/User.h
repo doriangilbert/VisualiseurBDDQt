@@ -12,12 +12,13 @@ private:
     string firstName;
     string identifier;
     string password;
+    bool admin;
     vector<Profile> profiles;
 
 public:
     //** Constructeurs **//
     User();
-    User(string lastName, string firstName, string identifier, string password, bool news);
+    User(string lastName, string firstName, string identifier, string password, bool admin, bool news);
 
     //** Getter et Setter **//
     string getLastName();
@@ -28,6 +29,8 @@ public:
     void setIdentifier(string identifier);
     string getPassword();
     void setPassword(string password);
+    bool getAdmin();
+    void setAdmin(bool admin);
     vector<Profile> getProfiles();
     void setProfiles(vector<Profile> profiles);
 
