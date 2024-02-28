@@ -19,6 +19,7 @@ public:
     explicit SelectProfile(QWidget *parent = nullptr);
     //** Destructeur de la classe SelectProfile **//
     ~SelectProfile();
+    //** Méthode permettant d'initialiser la page **//
     void load();
 
 private:
@@ -28,13 +29,13 @@ private:
 private slots:
     //** Slot appelé lors du clic sur le bouton valider **//
     void on_validerPushButton_clicked();
-
+    //** Slot appelé lors du clic sur le bouton créer un profil **//
     void on_creerProfilPushButton_clicked();
 
 signals:
     //** Signal émis lors du clic sur le bouton valider **//
     void validateButtonClicked();
-
+    //** Signal émis lors du clic sur le bouton créer un profil **//
     void createProfileButtonClicked();
 };
 

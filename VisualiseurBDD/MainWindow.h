@@ -31,6 +31,7 @@ private:
     class ManageUser *manageUserWidget;
     //** Page de sélection d'un profil **//
     class SelectProfile *selectProfileWidget;
+    //** Page de création d'un profil **//
     class CreateProfile *createProfileWidget;
 
 public slots:
@@ -44,8 +45,9 @@ public slots:
     void goToManageUserFromSelectProfile();
     //** Slot permettant de masquer la page de création d'un utilisateur et d'afficher la page de connexion **//
     void goToLoginFromCreateUser();
-
+    //** Slot permettant de masquer la page de sélection d'un profil et d'afficher la page de création d'un profil **//
     void goToCreateProfileFromSelectProfile();
+    //** Slot permettant de masquer la page de création d'un profil et d'afficher la page de sélection d'un profil **//
     void goToSelectProfileFromCreateProfile();
 };
 

@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     //** Initialisation de l'interface graphique **//
     ui->setupUi(this);
 
+    //** Lecture du fichier JSON **//
     ReadWriteJson qjson;
     qjson.readJson();
 
@@ -51,7 +52,9 @@ MainWindow::MainWindow(QWidget *parent)
     //** Masquage de la page de sélection d'un profil **//
     selectProfileWidget->hide();
 
+    //** Initialisation de la page de création d'un profil **//
     createProfileWidget = new CreateProfile(this);
+    //** Masquage de la page de création d'un profil **//
     createProfileWidget->hide();
     
     //** Connexion des signaux et des slots **//
@@ -81,6 +84,7 @@ void MainWindow::goToManageUserFromLogin() {
 void MainWindow::goToSelectProfileFromManageUser() {
     manageUserWidget->hide();
     selectProfileWidget->show();
+    //** Initialisation de la page de sélection d'un profil **//
     selectProfileWidget->load();
 }
 
@@ -102,13 +106,16 @@ void MainWindow::goToLoginFromCreateUser() {
     loginWidget->show();
 }
 
+//** Slot permettant de masquer la page de sélection d'un profil et d'afficher la page de création d'un profil **//
 void MainWindow::goToCreateProfileFromSelectProfile() {
     selectProfileWidget->hide();
     createProfileWidget->show();
 }
 
+//** Slot permettant de masquer la page de création d'un profil et d'afficher la page de sélection d'un profil **//
 void MainWindow::goToSelectProfileFromCreateProfile() {
     createProfileWidget->hide();
     selectProfileWidget->show();
+    //** Initialisation de la page de sélection d'un profil **//
     selectProfileWidget->load();
 }
