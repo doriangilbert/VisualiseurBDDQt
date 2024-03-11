@@ -24,6 +24,8 @@ SOURCES += \
     SelectProfile.cpp \
     TableView.cpp \
     User.cpp \
+    lib/shell.c \
+    lib/sqlite3.c \
     main.cpp
 
 HEADERS += \
@@ -41,7 +43,9 @@ HEADERS += \
     ReadWriteJson.h \
     SelectProfile.h \
     TableView.h \
-    User.h
+    User.h \
+    lib/sqlite3.h \
+    lib/sqlite3ext.h
 
 FORMS += \
     AddDatabase.ui \
@@ -55,9 +59,6 @@ FORMS += \
     QueryMaker.ui \
     SelectProfile.ui \
     TableView.ui
-
-LIBS += \
-    sqlite3.dll
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
