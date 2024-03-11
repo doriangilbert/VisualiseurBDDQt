@@ -149,6 +149,19 @@
     <string>Utilisateur</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="basesDeDonneesPushButton">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>340</y>
+     <width>111</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Bases de données</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
