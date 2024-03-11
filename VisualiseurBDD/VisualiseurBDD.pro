@@ -56,8 +56,8 @@ FORMS += \
     SelectProfile.ui \
     TableView.ui
 
-LIBS += ..\lib
-    lsqlite3.dll \
+LIBS += \
+    sqlite3.dll
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
