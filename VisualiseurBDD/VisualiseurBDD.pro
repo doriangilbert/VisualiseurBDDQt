@@ -9,40 +9,55 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    AddDatabase.cpp \
     CreateProfile.cpp \
     CreateUser.cpp \
     Data.cpp \
+    DatabasesList.cpp \
     Login.cpp \
     MainWindow.cpp \
+    ManageDatabase.cpp \
     ManageUser.cpp \
     Profile.cpp \
+    QueryMaker.cpp \
     ReadWriteJson.cpp \
     SelectProfile.cpp \
+    TableView.cpp \
     User.cpp \
     main.cpp
 
 HEADERS += \
+    AddDatabase.h \
     CreateProfile.h \
     CreateUser.h \
     Data.h \
+    DatabasesList.h \
     Login.h \
     MainWindow.h \
+    ManageDatabase.h \
     ManageUser.h \
     Profile.h \
+    QueryMaker.h \
     ReadWriteJson.h \
     SelectProfile.h \
+    TableView.h \
     User.h
 
 FORMS += \
+    AddDatabase.ui \
     CreateProfile.ui \
     CreateUser.ui \
+    DatabasesList.ui \
     Login.ui \
     MainWindow.ui \
+    ManageDatabase.ui \
     ManageUser.ui \
-    SelectProfile.ui
+    QueryMaker.ui \
+    SelectProfile.ui \
+    TableView.ui
 
-LIBS += \lib
-    lsqlite3.dll \lib
+LIBS += ..\lib
+    lsqlite3.dll \
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
