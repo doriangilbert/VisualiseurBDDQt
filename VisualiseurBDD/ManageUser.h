@@ -34,6 +34,8 @@ private slots:
     //** Slot appelé lors du clic sur le bouton créer un utilisateur
     void on_creerUtilisateurPushButton_clicked();
 
+    void on_basesDeDonneesPushButton_clicked();
+
 signals:
     //** Signal émis lors du clic sur le bouton sélectionner un profil **//
     void selectProfileButtonClicked();
@@ -41,6 +43,8 @@ signals:
     void disconnectButtonClicked();
     //** Signal émis lors du clic sur le bouton créer un utilisateur **//
     void createUserButtonClicked();
+
+    void basesDeDonneesButtonClicked();
 };
 
 #endif // MANAGEUSER_H

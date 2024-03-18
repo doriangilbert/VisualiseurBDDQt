@@ -12,3 +12,9 @@ AddDatabase::~AddDatabase()
 {
     delete ui;
 }
+
+void AddDatabase::on_retourPushButton_clicked()
+{
+    emit retourButtonClicked();
+}
+

@@ -58,3 +58,9 @@ void ManageUser::on_creerUtilisateurPushButton_clicked()
     emit createUserButtonClicked();
 }
 
+
+void ManageUser::on_basesDeDonneesPushButton_clicked()
+{
+    emit basesDeDonneesButtonClicked();
+}
+

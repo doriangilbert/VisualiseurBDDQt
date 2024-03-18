@@ -17,6 +17,12 @@ public:
 
 private:
     Ui::AddDatabase *ui;
+
+private slots:
+    void on_retourPushButton_clicked();
+
+signals:
+    void retourButtonClicked();
 };
 
 #endif // ADDDATABASE_H

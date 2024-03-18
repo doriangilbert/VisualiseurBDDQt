@@ -20,3 +20,15 @@ DatabasesList::~DatabasesList()
 {
     delete ui;
 }
+
+void DatabasesList::on_retourPushButton_clicked()
+{
+    emit retourButtonClicked();
+}
+
+
+void DatabasesList::on_ajouterBasePushButton_clicked()
+{
+    emit ajouterBaseButtonClicked();
+}
+

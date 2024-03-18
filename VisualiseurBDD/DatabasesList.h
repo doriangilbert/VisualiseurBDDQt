@@ -17,6 +17,16 @@ public:
 
 private:
     Ui::DatabasesList *ui;
+
+private slots:
+    void on_retourPushButton_clicked();
+
+    void on_ajouterBasePushButton_clicked();
+
+signals:
+    void retourButtonClicked();
+
+    void ajouterBaseButtonClicked();
 };
 
 #endif // DATABASESLIST_H

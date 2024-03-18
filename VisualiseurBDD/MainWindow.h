@@ -34,6 +34,10 @@ private:
     //** Page de création d'un profil **//
     class CreateProfile *createProfileWidget;
 
+    class DatabasesList *databasesListWidget;
+
+    class AddDatabase *addDatabaseWidget;
+
 public slots:
     //** Slot permettant de masquer la page de connexion et d'afficher la page de gestion d'un utilisateur **//
     void goToManageUserFromLogin();
@@ -51,6 +55,14 @@ public slots:
     void goToSelectProfileFromCreateProfile();
     //** Slot permettant de masquer la page de gestion d'un utilisateur et d'afficher la page de création d'un utilisateur **//
     void goToCreateUserFromManageUser();
+
+    void goToDatabasesListFromManageUser();
+
+    void goToManageUserFromDatabasesList();
+
+    void goToAddDatabaseFromDatabasesList();
+
+    void goToDatabasesListFromAddDatabase();
 };
 
 #endif // MAINWINDOW_H
