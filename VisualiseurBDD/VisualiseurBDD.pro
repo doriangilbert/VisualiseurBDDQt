@@ -20,6 +20,7 @@ SOURCES += \
     ManageUser.cpp \
     Profile.cpp \
     QueryMaker.cpp \
+    QueryResult.cpp \
     ReadWriteJson.cpp \
     SelectProfile.cpp \
     TableView.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
     ManageUser.h \
     Profile.h \
     QueryMaker.h \
+    QueryResult.h \
     ReadWriteJson.h \
     SelectProfile.h \
     TableView.h \
@@ -57,6 +59,7 @@ FORMS += \
     ManageDatabase.ui \
     ManageUser.ui \
     QueryMaker.ui \
+    QueryResult.ui \
     SelectProfile.ui \
     TableView.ui
 
