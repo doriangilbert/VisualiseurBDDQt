@@ -8,6 +8,10 @@
 #include "ReadWriteJson.h"
 #include "Data.h"
 #include "DatabasesList.h"
+#include "ManageDatabase.h"
+#include "TableViewer.h"
+#include "QueryMaker.h"
+#include "QueryResult.h"
 
 //** Constructeur de la classe MainWindow **//
 MainWindow::MainWindow(QWidget *parent)
@@ -60,6 +64,18 @@ MainWindow::MainWindow(QWidget *parent)
 
     databasesListWidget = new DatabasesList(this);
     databasesListWidget->hide();
+
+    manageDatabaseWidget = new ManageDatabase(this);
+    manageDatabaseWidget->hide();
+
+    tableViewerWidget = new TableViewer(this);
+    tableViewerWidget->hide();
+
+    queryMakerWidget = new QueryMaker(this);
+    queryMakerWidget->hide();
+
+    queryResultWidget = new QueryResult(this);
+    queryResultWidget->hide();
     
     //** Connexion des signaux et des slots **//
     connect(loginWidget, &Login::loginButtonClicked, this, &MainWindow::goToManageUserFromLogin);
@@ -140,6 +156,7 @@ void MainWindow::goToCreateUserFromManageUser() {
 void MainWindow::goToDatabasesListFromManageUser() {
     manageUserWidget->hide();
     databasesListWidget->show();
+    databasesListWidget->load();
 }
 
 void MainWindow::goToManageUserFromDatabasesList() {

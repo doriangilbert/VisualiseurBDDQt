@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TableView</class>
- <widget class="QWidget" name="TableView">
+ <class>TableViewer</class>
+ <widget class="QWidget" name="TableViewer">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -32,7 +32,7 @@
     <string>Consultation de table</string>
    </property>
   </widget>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
      <x>20</x>

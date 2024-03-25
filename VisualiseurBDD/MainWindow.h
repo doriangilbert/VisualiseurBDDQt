@@ -36,6 +36,14 @@ private:
 
     class DatabasesList *databasesListWidget;
 
+    class ManageDatabase *manageDatabaseWidget;
+
+    class TableViewer *tableViewerWidget;
+
+    class QueryMaker *queryMakerWidget;
+
+    class QueryResult *queryResultWidget;
+
 public slots:
     //** Slot permettant de masquer la page de connexion et d'afficher la page de gestion d'un utilisateur **//
     void goToManageUserFromLogin();

@@ -22,7 +22,7 @@ SOURCES += \
     QueryResult.cpp \
     ReadWriteJson.cpp \
     SelectProfile.cpp \
-    TableView.cpp \
+    TableViewer.cpp \
     User.cpp \
     lib/shell.c \
     lib/sqlite3.c \
@@ -42,7 +42,7 @@ HEADERS += \
     QueryResult.h \
     ReadWriteJson.h \
     SelectProfile.h \
-    TableView.h \
+    TableViewer.h \
     User.h \
     lib/sqlite3.h \
     lib/sqlite3ext.h
@@ -58,7 +58,7 @@ FORMS += \
     QueryMaker.ui \
     QueryResult.ui \
     SelectProfile.ui \
-    TableView.ui
+    TableViewer.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
