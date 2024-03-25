@@ -8,7 +8,6 @@
 #include "ReadWriteJson.h"
 #include "Data.h"
 #include "DatabasesList.h"
-#include "AddDatabase.h"
 
 //** Constructeur de la classe MainWindow **//
 MainWindow::MainWindow(QWidget *parent)
@@ -61,9 +60,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     databasesListWidget = new DatabasesList(this);
     databasesListWidget->hide();
-
-    addDatabaseWidget = new AddDatabase(this);
-    addDatabaseWidget->hide();
     
     //** Connexion des signaux et des slots **//
     connect(loginWidget, &Login::loginButtonClicked, this, &MainWindow::goToManageUserFromLogin);
@@ -76,8 +72,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(manageUserWidget, &ManageUser::createUserButtonClicked, this, &MainWindow::goToCreateUserFromManageUser);
     connect(manageUserWidget, &ManageUser::basesDeDonneesButtonClicked, this, &MainWindow::goToDatabasesListFromManageUser);
     connect(databasesListWidget, &DatabasesList::retourButtonClicked, this, &MainWindow::goToManageUserFromDatabasesList);
-    connect(databasesListWidget, &DatabasesList::ajouterBaseButtonClicked, this, &MainWindow::goToAddDatabaseFromDatabasesList);
-    connect(addDatabaseWidget, &AddDatabase::retourButtonClicked, this, &MainWindow::goToDatabasesListFromAddDatabase);
 }
 
 //** Destructeur de la classe MainWindow **//
@@ -151,14 +145,4 @@ void MainWindow::goToDatabasesListFromManageUser() {
 void MainWindow::goToManageUserFromDatabasesList() {
     databasesListWidget->hide();
     manageUserWidget->show();
-}
-
-void MainWindow::goToAddDatabaseFromDatabasesList() {
-    databasesListWidget->hide();
-    addDatabaseWidget->show();
-}
-
-void MainWindow::goToDatabasesListFromAddDatabase() {
-    addDatabaseWidget->hide();
-    databasesListWidget->show();
 }

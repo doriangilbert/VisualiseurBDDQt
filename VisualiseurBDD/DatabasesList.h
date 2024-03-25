@@ -14,6 +14,7 @@ class DatabasesList : public QWidget
 public:
     explicit DatabasesList(QWidget *parent = nullptr);
     ~DatabasesList();
+    void load();
 
 private:
     Ui::DatabasesList *ui;
@@ -25,8 +26,6 @@ private slots:
 
 signals:
     void retourButtonClicked();
-
-    void ajouterBaseButtonClicked();
 };
 
 #endif // DATABASESLIST_H

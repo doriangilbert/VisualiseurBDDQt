@@ -36,8 +36,6 @@ private:
 
     class DatabasesList *databasesListWidget;
 
-    class AddDatabase *addDatabaseWidget;
-
 public slots:
     //** Slot permettant de masquer la page de connexion et d'afficher la page de gestion d'un utilisateur **//
     void goToManageUserFromLogin();
@@ -59,10 +57,6 @@ public slots:
     void goToDatabasesListFromManageUser();
 
     void goToManageUserFromDatabasesList();
-
-    void goToAddDatabaseFromDatabasesList();
-
-    void goToDatabasesListFromAddDatabase();
 };
 
 #endif // MAINWINDOW_H

@@ -16,6 +16,10 @@ DatabasesList::DatabasesList(QWidget *parent)
     ui->setupUi(this);
 }
 
+void DatabasesList::load() {
+
+}
+
 DatabasesList::~DatabasesList()
 {
     delete ui;
@@ -29,6 +33,6 @@ void DatabasesList::on_retourPushButton_clicked()
 
 void DatabasesList::on_ajouterBasePushButton_clicked()
 {
-    emit ajouterBaseButtonClicked();
+
 }
 
