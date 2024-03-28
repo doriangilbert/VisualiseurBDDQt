@@ -1,13 +1,16 @@
 #include "DatabasesList.h"
 #include "ui_DatabasesList.h"
 #include "lib/sqlite3.h"
+#include <QFileDialog>
+#include <iostream>
 
-sqlite3* db;
-int rc = sqlite3_open("ma_base_de_données.db", &db);
+//sqlite3* db;
+//int rc = sqlite3_open("ma_base_de_données.db", &db);
 //if (rc != SQLITE_OK)
 //{
     // Gestion des erreurs
 //}
+
 
 DatabasesList::DatabasesList(QWidget *parent)
     : QWidget(parent)
@@ -16,7 +19,8 @@ DatabasesList::DatabasesList(QWidget *parent)
     ui->setupUi(this);
 }
 
-void DatabasesList::load() {
+void DatabasesList::load()
+{
 
 }
 
@@ -34,5 +38,6 @@ void DatabasesList::on_retourPushButton_clicked()
 void DatabasesList::on_ajouterBasePushButton_clicked()
 {
 
+    std::cout << "coucou";
 }
 

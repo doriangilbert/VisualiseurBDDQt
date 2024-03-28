@@ -44,6 +44,12 @@ bool ReadWriteJson::readJson()
             {
                 //On ajoute le profil
                 Profile profile(profileValue.toString().toStdString());
+                QJsonArray bddsArray = userObject["bdds"].toArray();
+                for (const QJsonValue &bddValue : bddsArray)
+                {
+                    BDD BDD(bddValue.toString().toStdString());
+                    profile.AddBDD(BDD);
+                }
                 user.AddProfile(profile);
             }
             //Puis on ajoute l'utilisateur à la liste d'utilisateurs
@@ -70,6 +76,16 @@ bool ReadWriteJson::writeJson()
         {
             //On transforme la liste d'objets "simples" en liste d'objet Json
             profiles.append(QString::fromStdString(Util.getProfiles()[i].getName()));
+
+            QJsonArray bdds;
+            //On parcourt toutes les bdds du profil
+            for (unsigned int j = 0; j < Util.getProfiles()[i].getBDDs().size(); j++)
+            {
+                //On transforme la liste d'objets "simples" en liste d'objet Json
+                bdds.append(QString::fromStdString(Util.getProfiles()[i].getBDDs()[j].getPath()));
+            }
+            //On ajoute la liste de BDD Json à l'objet profiles Json
+            profiles.append(bdds);
         }
         //On transforme les string "simples" en string Json
         account["nom"] = QString::fromStdString(Util.getLastName());

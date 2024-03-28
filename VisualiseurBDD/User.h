@@ -2,7 +2,6 @@
 #define USER_H
 
 #include "Profile.h"
-#include <vector>       // std::vector
 
 class User
 {

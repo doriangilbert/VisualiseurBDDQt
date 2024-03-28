@@ -2,6 +2,8 @@
 #define PROFILE_H
 
 #include <string>
+#include <vector>       // std::vector
+#include "BDD.h"
 using namespace std;
 
 class Profile
@@ -9,6 +11,7 @@ class Profile
 private:
     //** Attributs **//
     string name;
+    vector<BDD> BDDs;
 
 public:
     //** Constructeurs **//
@@ -18,8 +21,12 @@ public:
     //** Getter et Setter **//
     string getName();
     void setName(string name);
+    vector<BDD> getBDDs();
+    void setBDDs(vector<BDD> BDDs);
 
     //** Methodes **//
+    bool AddBDD(BDD bdd);
+    void RemoveBDD(BDD bdd);
 };
 
 #endif // PROFILE_H
