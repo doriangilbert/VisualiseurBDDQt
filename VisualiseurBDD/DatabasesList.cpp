@@ -4,7 +4,6 @@
 #include "ReadWriteJson.h"
 #include "lib/sqlite3.h"
 #include <QFileDialog>
-#include <iostream>
 
 
 //sqlite3* db;
@@ -44,14 +43,38 @@ void DatabasesList::on_ajouterBasePushButton_clicked()
     QString fileName = QFileDialog::getOpenFileName(this, tr("Ouvrir fichier"), "", tr("Fichiers SQLite (*.SQLite)"));
 
     // On vérifie si un fichier a été sélectionné
-    if (!fileName.isEmpty()) {
-        BDD newBdd(fileName.toStdString());
-        Data::getCurrentProfile().AddBDD(newBdd);
-        std::cout << "coucou";
+    if (!fileName.isEmpty())
+    {
+        //** On crée la nouvelle BDD **//
+        string nomBdd = fileName.toStdString();
+        BDD newBdd(nomBdd);
+
+        //** Récupération de l'utilisateur courant **//
+        User currentUser = Data::getCurrentUser();
+        //** Récupération du profil courant **//
+        Profile currentProfile = Data::getCurrentProfile();
+
+        //** Création d'un nouvel utilisateur **//
+        User newUser = User(currentUser.getLastName(), currentUser.getFirstName(), currentUser.getIdentifier(), currentUser.getPassword(), currentUser.getAdmin(),0);
+
+        //** Insertion des profils de l'utilisateur courant dans le nouvel utilisateur**//
+        for (Profile profil : Data::getCurrentUser().getProfiles())
+        {
+            //** On ajoute la BDD au profil courant **//
+            if (profil.getName() == Data::getCurrentProfile().getName())
+            {
+                profil.AddBDD(newBdd);
+            }
+            newUser.AddProfile(profil);
+        }
+
+        Data::setCurrentUser(newUser);
+        Data::deleteUser(Data::getCurrentUser().getIdentifier());
+        Data::addUser(newUser);
+
         //** Mise à jour du fichier JSON **//
         ReadWriteJson qjson;
         qjson.writeJson();
-        //std::cout << fileName.toStdString();
     }
 
 }

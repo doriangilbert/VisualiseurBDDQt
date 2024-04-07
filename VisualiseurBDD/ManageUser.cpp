@@ -2,6 +2,7 @@
 #include "ui_ManageUser.h"
 #include "Data.h"
 
+
 //** Constructeur de la classe ManageUser **//
 ManageUser::ManageUser(QWidget *parent)
     : QWidget(parent)
