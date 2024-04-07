@@ -1,8 +1,11 @@
 #include "DatabasesList.h"
 #include "ui_DatabasesList.h"
+#include "Data.h"
+#include "ReadWriteJson.h"
 #include "lib/sqlite3.h"
 #include <QFileDialog>
 #include <iostream>
+
 
 //sqlite3* db;
 //int rc = sqlite3_open("ma_base_de_données.db", &db);
@@ -37,7 +40,19 @@ void DatabasesList::on_retourPushButton_clicked()
 
 void DatabasesList::on_ajouterBasePushButton_clicked()
 {
+    // On ouvre la boîte de dialogue pour choisir un fichier .SQLite
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Ouvrir fichier"), "", tr("Fichiers SQLite (*.SQLite)"));
 
-    std::cout << "coucou";
+    // On vérifie si un fichier a été sélectionné
+    if (!fileName.isEmpty()) {
+        BDD newBdd(fileName.toStdString());
+        Data::getCurrentProfile().AddBDD(newBdd);
+        std::cout << "coucou";
+        //** Mise à jour du fichier JSON **//
+        ReadWriteJson qjson;
+        qjson.writeJson();
+        //std::cout << fileName.toStdString();
+    }
+
 }
 

@@ -31,7 +31,9 @@ void CreateUser::on_validerPushButton_clicked()
     string motDePasse = ui->motDePasseLineEdit->text().toStdString();
     string confirmationMotDePasse = ui->confirmationMotDePasseLineEdit->text().toStdString();
     bool isAdmin = ui->adminCheckBox->isChecked();
-    if (motDePasse == confirmationMotDePasse)
+
+    //** On accepte le nouvel utilisateur si tous les champs sont remplis et que la confirmation du mot de passe est identique au mot de passe **//
+    if (motDePasse == confirmationMotDePasse && !nom.empty() && !prenom.empty() && !identifiant.empty() && !motDePasse.empty())
     {
         User newUser = User(nom, prenom, identifiant, motDePasse, isAdmin,1);
         Data::addUser(newUser);

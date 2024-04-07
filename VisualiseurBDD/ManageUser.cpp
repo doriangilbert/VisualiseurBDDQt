@@ -28,6 +28,12 @@ void ManageUser::load() {
     } else {
         ui->creerUtilisateurPushButton->setDisabled(false);
     }
+    //** Activation conditionnelle du bouton de consultation de Bases De Données lorsque l'utilisateur courant aura sélectionné un profil courant **//
+    if (!Data::getCurrentProfile().getName().empty()) {
+        ui->basesDeDonneesPushButton->setDisabled(false);
+    } else {
+        ui->basesDeDonneesPushButton->setDisabled(true);
+    }
 }
 
 //** Destructeur de la classe ManageUser **//
