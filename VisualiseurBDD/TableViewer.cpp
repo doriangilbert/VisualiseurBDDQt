@@ -1,7 +1,7 @@
 #include "TableViewer.h"
 #include "ui_TableViewer.h"
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQueryModel>
+#include <QSqlDatabase>
+#include <QSqlQueryModel>
 
 TableViewer::TableViewer(QWidget *parent)
     : QWidget(parent)
@@ -11,13 +11,13 @@ TableViewer::TableViewer(QWidget *parent)
 }
 
 void TableViewer::load() {
-    // QSqlDatabase bdd = QSqlDatabase::addDatabase("QSQLITE");
-    // bdd.setDatabaseName("db_exemple.db");
-    // bdd.open();
-    // QSqlQueryModel model;
-    // model.setQuery("SELECT * FROM Personne");
-    // ui->tableView->setModel(model);
-    // ui->tableView->show();
+    QSqlDatabase bdd = QSqlDatabase::addDatabase("QSQLITE");
+    bdd.setDatabaseName("Hector.SQLite");
+    bdd.open();
+    QSqlQueryModel *model = new QSqlQueryModel();
+    model->setQuery("SELECT * FROM Articles");
+    ui->tableView->setModel(model);
+    ui->tableView->resizeColumnsToContents();
 }
 
 TableViewer::~TableViewer()

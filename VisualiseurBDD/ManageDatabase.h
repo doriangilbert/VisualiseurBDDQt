@@ -14,6 +14,7 @@ class ManageDatabase : public QWidget
 public:
     explicit ManageDatabase(QWidget *parent = nullptr);
     ~ManageDatabase();
+    void load();
 
 private:
     Ui::ManageDatabase *ui;
