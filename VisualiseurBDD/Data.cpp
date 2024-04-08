@@ -4,6 +4,7 @@
 vector<User> Data::users;
 User Data::currentUser;
 Profile Data::currentProfile;
+BDD Data::currentBDD;
 
 //** Getter de l'attribut users **//
 vector<User> Data::getUsers()
@@ -46,6 +47,18 @@ void Data::addUser(User newCurrentUser)
 {
     //** Ajout de l'utilisateur à la liste des utilisateurs **//
     users.push_back(newCurrentUser);
+}
+
+//** Getter de l'attribut currentBDD **//
+BDD Data::getCurrentBDD()
+{
+    return currentBDD;
+}
+
+//** Setter de l'attribut currentBDD **//
+void Data::setCurrentBDD(BDD newCurrentBDD)
+{
+    currentBDD = newCurrentBDD;
 }
 
 //** Méthode permettant de supprimer un utilisateur **//

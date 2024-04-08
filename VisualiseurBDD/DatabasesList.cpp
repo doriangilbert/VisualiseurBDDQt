@@ -4,14 +4,9 @@
 #include "ReadWriteJson.h"
 #include "lib/sqlite3.h"
 #include <QFileDialog>
-
-
-//sqlite3* db;
-//int rc = sqlite3_open("ma_base_de_données.db", &db);
-//if (rc != SQLITE_OK)
-//{
-    // Gestion des erreurs
-//}
+#include <QStandardItemModel>
+#include <iostream>
+#include <QMessageBox>
 
 
 DatabasesList::DatabasesList(QWidget *parent)
@@ -23,6 +18,54 @@ DatabasesList::DatabasesList(QWidget *parent)
 
 void DatabasesList::load()
 {
+    // Création du modèle de vue
+    QStandardItemModel *model = new QStandardItemModel();
+
+    // Ajout des en-têtes de colonne
+    model->setHorizontalHeaderLabels(QStringList{"Chemin absolu du fichier"});
+
+    // Ajout des données un tableau et on ajoute les noms des fichiers dans un combobox
+    QStringList data = {};
+    for (auto chemin : Data::getCurrentProfile().getBDDs())
+    {
+        data.append(QString::fromStdString(chemin.getPath()));
+
+        // On ne garde que le nom du fichier pour l'afficher dans la combobox
+        QFileInfo fileInfoBdd(QString::fromStdString(chemin.getPath()));
+        QString fileNameBdd = fileInfoBdd.fileName();
+        ui->comboBox->addItem(fileNameBdd);
+    }
+
+    // On ajoute ces données dans la colonne
+    for (const QString &text : data) {
+        QList<QStandardItem*> items;
+        items.append(new QStandardItem(text));
+        model->appendRow(items);
+    }
+
+    // On insère le modèle dans la TableView
+    ui->tableView->setModel(model);
+    ui->tableView->horizontalHeader()->setStretchLastSection(true);
+
+    // Connexion du clic sur une ligne avec le slot onTableViewClicked
+    QObject::connect(ui->tableView, &QTableView::clicked, [&](const QModelIndex &index)
+    {
+        if (index.isValid())
+        {
+            // On indique que la BDD courante est la ligne choisie
+            QVariant value = model->data(model->index(index.row(), 0));
+            for (auto dataBase : Data::getCurrentProfile().getBDDs())
+            {
+                if (value.toString() == QString::fromStdString(dataBase.getPath()))
+                {
+                    Data::setCurrentBDD(dataBase);
+                }
+            }
+
+            //On ouvre la prochaine fenêtre
+
+        }
+    });
 
 }
 
@@ -76,6 +119,11 @@ void DatabasesList::on_ajouterBasePushButton_clicked()
         ReadWriteJson qjson;
         qjson.writeJson();
     }
+}
 
+void DatabasesList::on_supprimerPushButton_clicked()
+{
+    //for
+    cout << "coucou";
 }
 

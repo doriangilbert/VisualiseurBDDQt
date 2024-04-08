@@ -1,4 +1,5 @@
 #include "Profile.h"
+#include <QFileInfo>
 
 //** Construteur par défaut **//
 Profile::Profile()
@@ -44,12 +45,20 @@ void Profile::setBDDs(vector<BDD> BDDs)
  * on l'ajoute et on renvoie comme booleen false */
 bool Profile::AddBDD(BDD bdd)
 {
+    // On ne garde que le nom du fichier de la bdd à ajouter pour la comparaison
+    QFileInfo fileInfoBdd(QString::fromStdString(bdd.getPath()));
+    QString fileNameBdd = fileInfoBdd.fileName();
+
     bool found = false;
     //On cherche si une BDD identique existe déjà
     for (BDD bdds: this->BDDs)
     {
+        // On ne garde que le nom du fichier à comparer
+        QFileInfo fileInfo(QString::fromStdString(bdds.getPath()));
+        QString fileName = fileInfo.fileName();
+
         //Si on en trouve une, on change le booleen
-        if (bdds.getPath() == bdd.getPath())
+        if (fileName == fileNameBdd)
         {
             found = true;
         }
@@ -64,11 +73,15 @@ bool Profile::AddBDD(BDD bdd)
 }
 
 //** Fonction supprimant une bdd de la liste de bdds du profil utilisateur **//
-void Profile::RemoveBDD(BDD bdd)
+void Profile::RemoveBDD(string fileName)
 {
     for (size_t i = 0; i < this->BDDs.size(); i++)
     {
-        if (this->BDDs[i].getPath() == bdd.getPath())
+        // On ne garde que le nom du fichier que l'on veut enlever
+        QFileInfo fileInfoBdd(QString::fromStdString(this->BDDs[i].getPath()));
+        QString fileNameBdd = fileInfoBdd.fileName();
+
+        if (fileNameBdd == QString::fromStdString(fileName))
         {
             this->BDDs.erase(this->BDDs.begin() + i);
         }

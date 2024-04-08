@@ -24,6 +24,8 @@ private slots:
 
     void on_ajouterBasePushButton_clicked();
 
+    void on_supprimerPushButton_clicked();
+
 signals:
     void retourButtonClicked();
 };

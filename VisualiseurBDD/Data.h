@@ -14,6 +14,8 @@ private:
     static User currentUser;
     //** Attribut stockant le profil courant **//
     static Profile currentProfile;
+    //** Attribut stockant la BDD courante **//
+    static BDD currentBDD;
 
 public:
     //** Constructeur de la classe Data **//
@@ -30,6 +32,10 @@ public:
     static Profile getCurrentProfile();
     //** Setter de l'attribut currentProfile **//
     static void setCurrentProfile(Profile newCurrentProfile);
+    //** Getter de l'attribut currentBDD **//
+    static BDD getCurrentBDD();
+    //** Setter de l'attribut currentBDD **//
+    static void setCurrentBDD(BDD newCurrentBDD);
     //** Méthode permettant d'ajouter un utilisateur **//
     static void addUser(User newCurrentUser);
     //** Méthode permettant de supprimer un utilisateur **//

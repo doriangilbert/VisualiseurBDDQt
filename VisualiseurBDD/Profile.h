@@ -26,7 +26,7 @@ public:
 
     //** Methodes **//
     bool AddBDD(BDD bdd);
-    void RemoveBDD(BDD bdd);
+    void RemoveBDD(string fileName);
 };
 
 #endif // PROFILE_H
