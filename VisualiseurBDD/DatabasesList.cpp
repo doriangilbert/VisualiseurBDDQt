@@ -5,7 +5,6 @@
 #include "lib/sqlite3.h"
 #include <QFileDialog>
 #include <QStandardItemModel>
-#include <iostream>
 #include <QMessageBox>
 
 
@@ -118,12 +117,46 @@ void DatabasesList::on_ajouterBasePushButton_clicked()
         //** Mise à jour du fichier JSON **//
         ReadWriteJson qjson;
         qjson.writeJson();
+
+        emit retourButtonClicked();
     }
 }
 
 void DatabasesList::on_supprimerPushButton_clicked()
 {
-    //for
-    cout << "coucou";
+    //** On récupère le nom de la BDD qu'on veut retirer **//
+    int selectedIndex = ui->comboBox->currentIndex();
+    QString selectedText = ui->comboBox->itemText(selectedIndex);
+
+    string nameBdd = selectedText.toStdString();
+
+    //** Récupération de l'utilisateur courant **//
+    User currentUser = Data::getCurrentUser();
+    //** Récupération du profil courant **//
+    Profile currentProfile = Data::getCurrentProfile();
+
+    //** Création d'un nouvel utilisateur **//
+    User newUser = User(currentUser.getLastName(), currentUser.getFirstName(), currentUser.getIdentifier(), currentUser.getPassword(), currentUser.getAdmin(),0);
+
+    //** Insertion des profils de l'utilisateur courant dans le nouvel utilisateur**//
+    for (Profile profil : Data::getCurrentUser().getProfiles())
+    {
+        //** On supprime la BDD au profil courant **//
+        if (profil.getName() == Data::getCurrentProfile().getName())
+        {
+            profil.RemoveBDD(nameBdd);
+        }
+        newUser.AddProfile(profil);
+    }
+
+    Data::setCurrentUser(newUser);
+    Data::deleteUser(Data::getCurrentUser().getIdentifier());
+    Data::addUser(newUser);
+
+    //** Mise à jour du fichier JSON **//
+    ReadWriteJson qjson;
+    qjson.writeJson();
+
+    emit retourButtonClicked();
 }
 

@@ -1,5 +1,6 @@
 #include "Profile.h"
 #include <QFileInfo>
+#include <iostream>
 
 //** Construteur par défaut **//
 Profile::Profile()
