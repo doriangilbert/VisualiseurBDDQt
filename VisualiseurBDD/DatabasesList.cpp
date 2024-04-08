@@ -23,6 +23,8 @@ void DatabasesList::load()
     // Ajout des en-têtes de colonne
     model->setHorizontalHeaderLabels(QStringList{"Chemin absolu du fichier"});
 
+    ui->comboBox->clear();
+
     // Ajout des données un tableau et on ajoute les noms des fichiers dans un combobox
     QStringList data = {};
     for (auto chemin : Data::getCurrentProfile().getBDDs())
@@ -99,6 +101,7 @@ void DatabasesList::on_ajouterBasePushButton_clicked()
         //** Création d'un nouvel utilisateur **//
         User newUser = User(currentUser.getLastName(), currentUser.getFirstName(), currentUser.getIdentifier(), currentUser.getPassword(), currentUser.getAdmin(),0);
 
+        Profile newProfil;
         //** Insertion des profils de l'utilisateur courant dans le nouvel utilisateur**//
         for (Profile profil : Data::getCurrentUser().getProfiles())
         {
@@ -106,6 +109,7 @@ void DatabasesList::on_ajouterBasePushButton_clicked()
             if (profil.getName() == Data::getCurrentProfile().getName())
             {
                 profil.AddBDD(newBdd);
+                newProfil = profil;
             }
             newUser.AddProfile(profil);
         }
@@ -113,12 +117,15 @@ void DatabasesList::on_ajouterBasePushButton_clicked()
         Data::setCurrentUser(newUser);
         Data::deleteUser(Data::getCurrentUser().getIdentifier());
         Data::addUser(newUser);
+        Data::setCurrentProfile(newProfil);
+        Data::getCurrentUser().AddProfile(newProfil);
+        Data::getCurrentProfile().AddBDD(newBdd);
 
         //** Mise à jour du fichier JSON **//
         ReadWriteJson qjson;
         qjson.writeJson();
 
-        emit retourButtonClicked();
+        this->load();
     }
 }
 
@@ -138,6 +145,7 @@ void DatabasesList::on_supprimerPushButton_clicked()
     //** Création d'un nouvel utilisateur **//
     User newUser = User(currentUser.getLastName(), currentUser.getFirstName(), currentUser.getIdentifier(), currentUser.getPassword(), currentUser.getAdmin(),0);
 
+    Profile newProfil;
     //** Insertion des profils de l'utilisateur courant dans le nouvel utilisateur**//
     for (Profile profil : Data::getCurrentUser().getProfiles())
     {
@@ -145,6 +153,7 @@ void DatabasesList::on_supprimerPushButton_clicked()
         if (profil.getName() == Data::getCurrentProfile().getName())
         {
             profil.RemoveBDD(nameBdd);
+            newProfil = profil;
         }
         newUser.AddProfile(profil);
     }
@@ -152,11 +161,14 @@ void DatabasesList::on_supprimerPushButton_clicked()
     Data::setCurrentUser(newUser);
     Data::deleteUser(Data::getCurrentUser().getIdentifier());
     Data::addUser(newUser);
+    Data::setCurrentProfile(newProfil);
+    Data::getCurrentUser().AddProfile(newProfil);
+    Data::getCurrentProfile().RemoveBDD(nameBdd);
 
     //** Mise à jour du fichier JSON **//
     ReadWriteJson qjson;
     qjson.writeJson();
 
-    emit retourButtonClicked();
+    this->load();
 }
 
