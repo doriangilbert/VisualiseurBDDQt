@@ -5,6 +5,8 @@ vector<User> Data::users;
 User Data::currentUser;
 Profile Data::currentProfile;
 BDD Data::currentBDD;
+string Data::requete;
+string Data::table;
 
 //** Getter de l'attribut users **//
 vector<User> Data::getUsers()
@@ -74,4 +76,24 @@ void Data::deleteUser(string userId) {
 }
 
 //** Constructeur de la classe Data **//
+string Data::getRequete()
+{
+    return requete;
+}
+
+void Data::setRequete(const string &newRequete)
+{
+    requete = newRequete;
+}
+
+string Data::getTable()
+{
+    return table;
+}
+
+void Data::setTable(const string &newTable)
+{
+    table = newTable;
+}
+
 Data::Data() {}

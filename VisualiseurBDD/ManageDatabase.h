@@ -18,6 +18,22 @@ public:
 
 private:
     Ui::ManageDatabase *ui;
+
+private slots:
+    void on_effectuerRequetePushButton_clicked();
+
+    void on_supprimerBasePushButton_clicked();
+
+    void on_retourPushButton_clicked();
+
+    void on_tableView_clicked(const QModelIndex &index);
+
+signals:
+    void effectuerRequeteButtonClicked();
+
+    void retourButtonClicked();
+
+    void tableViewClicked();
 };
 
 #endif // MANAGEDATABASE_H

@@ -18,6 +18,12 @@ public:
 
 private:
     Ui::TableViewer *ui;
+
+private slots:
+    void on_retourPushButton_clicked();
+
+signals:
+    void retourButtonClicked();
 };
 
 #endif // TABLEVIEWER_H

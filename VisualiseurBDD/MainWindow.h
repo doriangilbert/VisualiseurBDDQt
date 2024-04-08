@@ -65,6 +65,22 @@ public slots:
     void goToDatabasesListFromManageUser();
 
     void goToManageUserFromDatabasesList();
+
+    void goToQueryMakerFromManageDatabase();
+
+    void goToDatabasesListFromManageDatabase();
+
+    void goToManageDatabaseFromTableViewer();
+
+    void goToQueryResultFromQueryMaker();
+
+    void goToManageDatabaseFromQueryMaker();
+
+    void goToManageDatabaseFromQueryResult();
+
+    void goToTableViewerFromManageDatabase();
+
+    void goToManageDatabaseFromDatabasesList();
 };
 
 #endif // MAINWINDOW_H

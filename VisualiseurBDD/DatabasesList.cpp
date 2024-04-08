@@ -63,7 +63,7 @@ void DatabasesList::load()
             }
 
             //On ouvre la prochaine fenêtre
-
+            emit tableViewClicked();
         }
     });
 

@@ -28,6 +28,8 @@ private slots:
 
 signals:
     void retourButtonClicked();
+
+    void tableViewClicked();
 };
 
 #endif // DATABASESLIST_H

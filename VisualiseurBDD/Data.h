@@ -17,6 +17,10 @@ private:
     //** Attribut stockant la BDD courante **//
     static BDD currentBDD;
 
+    static string requete;
+
+    static string table;
+
 public:
     //** Constructeur de la classe Data **//
     Data();
@@ -40,6 +44,10 @@ public:
     static void addUser(User newCurrentUser);
     //** Méthode permettant de supprimer un utilisateur **//
     static void deleteUser(string userId);
+    static string getRequete();
+    static void setRequete(const string &newRequete);
+    static string getTable();
+    static void setTable(const string &newTable);
 };
 
 #endif // DATA_H

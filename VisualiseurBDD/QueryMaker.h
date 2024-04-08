@@ -17,6 +17,16 @@ public:
 
 private:
     Ui::QueryMaker *ui;
+
+private slots:
+    void on_executerRequetePushButton_clicked();
+
+    void on_retourPushButton_clicked();
+
+signals:
+    void executerRequeteButtonClicked();
+
+    void retourButtonClicked();
 };
 
 #endif // QUERYMAKER_H

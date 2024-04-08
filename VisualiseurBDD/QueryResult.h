@@ -14,9 +14,16 @@ class QueryResult : public QWidget
 public:
     explicit QueryResult(QWidget *parent = nullptr);
     ~QueryResult();
+    void load();
 
 private:
     Ui::QueryResult *ui;
+
+private slots:
+    void on_retourPushButton_clicked();
+
+signals:
+    void retourButtonClicked();
 };
 
 #endif // QUERYRESULT_H

@@ -76,6 +76,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     queryResultWidget = new QueryResult(this);
     queryResultWidget->hide();
+
+    Data::setCurrentBDD(BDD("D:/Users/dodog/Desktop/Hector.SQLite"));
+    manageDatabaseWidget->show();
+    manageDatabaseWidget->load();
     
     //** Connexion des signaux et des slots **//
     connect(loginWidget, &Login::loginButtonClicked, this, &MainWindow::goToManageUserFromLogin);
@@ -88,6 +92,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(manageUserWidget, &ManageUser::createUserButtonClicked, this, &MainWindow::goToCreateUserFromManageUser);
     connect(manageUserWidget, &ManageUser::basesDeDonneesButtonClicked, this, &MainWindow::goToDatabasesListFromManageUser);
     connect(databasesListWidget, &DatabasesList::retourButtonClicked, this, &MainWindow::goToManageUserFromDatabasesList);
+    connect(manageDatabaseWidget, &ManageDatabase::effectuerRequeteButtonClicked, this, &MainWindow::goToQueryMakerFromManageDatabase);
+    connect(manageDatabaseWidget, &ManageDatabase::retourButtonClicked, this, &MainWindow::goToDatabasesListFromManageDatabase);
+    connect(tableViewerWidget, &TableViewer::retourButtonClicked, this, &MainWindow::goToManageDatabaseFromTableViewer);
+    connect(queryMakerWidget, &QueryMaker::executerRequeteButtonClicked, this, &MainWindow::goToQueryResultFromQueryMaker);
+    connect(queryMakerWidget, &QueryMaker::retourButtonClicked, this, &MainWindow::goToManageDatabaseFromQueryMaker);
+    connect(queryResultWidget, &QueryResult::retourButtonClicked, this, &MainWindow::goToManageDatabaseFromQueryResult);
+    connect(manageDatabaseWidget, &ManageDatabase::tableViewClicked, this, &MainWindow::goToTableViewerFromManageDatabase);
+    connect(databasesListWidget, &DatabasesList::tableViewClicked, this, &MainWindow::goToManageDatabaseFromDatabasesList);
 }
 
 //** Destructeur de la classe MainWindow **//
@@ -162,4 +174,51 @@ void MainWindow::goToDatabasesListFromManageUser() {
 void MainWindow::goToManageUserFromDatabasesList() {
     databasesListWidget->hide();
     manageUserWidget->show();
+}
+
+void MainWindow::goToQueryMakerFromManageDatabase() {
+    manageDatabaseWidget->hide();
+    queryMakerWidget->show();
+}
+
+void MainWindow::goToDatabasesListFromManageDatabase() {
+    manageDatabaseWidget->hide();
+    databasesListWidget->show();
+    databasesListWidget->load();
+}
+
+void MainWindow::goToManageDatabaseFromTableViewer() {
+    tableViewerWidget->hide();
+    manageDatabaseWidget->show();
+    manageDatabaseWidget->load();
+}
+
+void MainWindow::goToQueryResultFromQueryMaker() {
+    queryMakerWidget->hide();
+    queryResultWidget->show();
+    queryResultWidget->load();
+}
+
+void MainWindow::goToManageDatabaseFromQueryMaker() {
+    queryMakerWidget->hide();
+    manageDatabaseWidget->show();
+    manageDatabaseWidget->load();
+}
+
+void MainWindow::goToManageDatabaseFromQueryResult() {
+    queryResultWidget->hide();
+    manageDatabaseWidget->show();
+    manageDatabaseWidget->load();
+}
+
+void MainWindow::goToTableViewerFromManageDatabase() {
+    manageDatabaseWidget->hide();
+    tableViewerWidget->show();
+    tableViewerWidget->load();
+}
+
+void MainWindow::goToManageDatabaseFromDatabasesList() {
+    databasesListWidget->hide();
+    manageDatabaseWidget->show();
+    manageDatabaseWidget->load();
 }

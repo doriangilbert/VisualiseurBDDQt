@@ -14,15 +14,13 @@ TableViewer::TableViewer(QWidget *parent)
 
 void TableViewer::load() {
 
-    string chemin = Data::getCurrentBDD().getPath();
-    QFileInfo fileInfoBdd(QString::fromStdString(chemin));
-    QString fileNameBdd = fileInfoBdd.fileName();
-
-    QSqlDatabase bdd = QSqlDatabase::addDatabase(QString::fromStdString(chemin));
-    bdd.setDatabaseName(fileNameBdd);
+    QString chemin = QString::fromStdString(Data::getCurrentBDD().getPath());
+    QSqlDatabase bdd = QSqlDatabase::addDatabase("QSQLITE");
+    bdd.setDatabaseName(chemin);
     bdd.open();
     QSqlQueryModel *model = new QSqlQueryModel();
-    model->setQuery("SELECT * FROM Articles");
+    QString requete = "SELECT * FROM " + QString::fromStdString(Data::getTable());
+    model->setQuery(requete);
     ui->tableView->setModel(model);
     ui->tableView->resizeColumnsToContents();
 }
@@ -31,3 +29,9 @@ TableViewer::~TableViewer()
 {
     delete ui;
 }
+
+void TableViewer::on_retourPushButton_clicked()
+{
+    emit retourButtonClicked();
+}
+
