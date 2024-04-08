@@ -76,10 +76,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     queryResultWidget = new QueryResult(this);
     queryResultWidget->hide();
-
-    Data::setCurrentBDD(BDD("D:/Users/dodog/Desktop/Hector.SQLite"));
-    manageDatabaseWidget->show();
-    manageDatabaseWidget->load();
     
     //** Connexion des signaux et des slots **//
     connect(loginWidget, &Login::loginButtonClicked, this, &MainWindow::goToManageUserFromLogin);
