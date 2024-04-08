@@ -42,23 +42,10 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="supprimerBasePushButton">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>360</y>
-     <width>111</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Supprimer la base</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="effectuerRequetePushButton">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>450</x>
      <y>360</y>
      <width>131</width>
      <height>24</height>
@@ -71,7 +58,7 @@
   <widget class="QPushButton" name="retourPushButton">
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>70</x>
      <y>360</y>
      <width>61</width>
      <height>24</height>

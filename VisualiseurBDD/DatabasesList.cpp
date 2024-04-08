@@ -48,25 +48,25 @@ void DatabasesList::load()
     ui->tableView->setModel(model);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
 
-    // Connexion du clic sur une ligne avec le slot onTableViewClicked
-    QObject::connect(ui->tableView, &QTableView::clicked, [&](const QModelIndex &index)
-    {
-        if (index.isValid())
-        {
-            // On indique que la BDD courante est la ligne choisie
-            QVariant value = model->data(model->index(index.row(), 0));
-            for (auto dataBase : Data::getCurrentProfile().getBDDs())
-            {
-                if (value.toString() == QString::fromStdString(dataBase.getPath()))
-                {
-                    Data::setCurrentBDD(dataBase);
-                }
-            }
+    // // Connexion du clic sur une ligne avec le slot onTableViewClicked
+    // QObject::connect(ui->tableView, &QTableView::clicked, [&](const QModelIndex &index)
+    // {
+    //     if (index.isValid())
+    //     {
+    //         // On indique que la BDD courante est la ligne choisie
+    //         QVariant value = model->data(model->index(index.row(), 0));
+    //         for (auto dataBase : Data::getCurrentProfile().getBDDs())
+    //         {
+    //             if (value.toString() == QString::fromStdString(dataBase.getPath()))
+    //             {
+    //                 Data::setCurrentBDD(dataBase);
+    //             }
+    //         }
 
-            //On ouvre la prochaine fenêtre
-            emit tableViewClicked();
-        }
-    });
+    //         //On ouvre la prochaine fenêtre
+    //         emit tableViewClicked();
+    //     }
+    // });
 
 }
 
@@ -170,5 +170,25 @@ void DatabasesList::on_supprimerPushButton_clicked()
     qjson.writeJson();
 
     this->load();
+}
+
+
+void DatabasesList::on_tableView_clicked(const QModelIndex &index)
+{
+    if (index.isValid())
+    {
+        // On indique que la BDD courante est la ligne choisie
+        QVariant value = ui->tableView->model()->data(ui->tableView->model()->index(index.row(), 0));
+        for (auto dataBase : Data::getCurrentProfile().getBDDs())
+        {
+            if (value.toString() == QString::fromStdString(dataBase.getPath()))
+            {
+                Data::setCurrentBDD(dataBase);
+            }
+        }
+
+        //On ouvre la prochaine fenêtre
+        emit tableViewClicked();
+    }
 }
 

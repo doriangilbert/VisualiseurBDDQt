@@ -26,6 +26,8 @@ private slots:
 
     void on_supprimerPushButton_clicked();
 
+    void on_tableView_clicked(const QModelIndex &index);
+
 signals:
     void retourButtonClicked();
 

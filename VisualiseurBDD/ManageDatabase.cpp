@@ -32,13 +32,6 @@ void ManageDatabase::on_effectuerRequetePushButton_clicked()
     emit effectuerRequeteButtonClicked();
 }
 
-
-void ManageDatabase::on_supprimerBasePushButton_clicked()
-{
-
-}
-
-
 void ManageDatabase::on_retourPushButton_clicked()
 {
     emit retourButtonClicked();
