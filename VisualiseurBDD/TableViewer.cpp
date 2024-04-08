@@ -13,7 +13,6 @@ TableViewer::TableViewer(QWidget *parent)
 }
 
 void TableViewer::load() {
-
     QString chemin = QString::fromStdString(Data::getCurrentBDD().getPath());
     QSqlDatabase bdd = QSqlDatabase::addDatabase("QSQLITE");
     bdd.setDatabaseName(chemin);
